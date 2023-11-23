@@ -14,3 +14,10 @@ vendor-style:
       css/vendor-style.css: {}
   js:
     js/vendor-style.js: { preprocess: false }
+
+menu-style:
+  css:
+    theme:
+      css/menu-style.css: {}
+  js:
+    js/menu-style.js: { preprocess: false }
