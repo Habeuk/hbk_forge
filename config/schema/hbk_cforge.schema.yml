@@ -1,0 +1,8 @@
+# Schema for the configuration files of the HBK cforge theme.
+hbk_cforge.settings:
+  type: theme_settings
+  label: 'HBK cforge settings'
+  mapping:
+    font_size:
+      type: integer
+      label: Font size

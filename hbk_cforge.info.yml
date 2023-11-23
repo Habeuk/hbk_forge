@@ -1,0 +1,21 @@
+name: HBK cforge
+type: theme
+base theme: classy
+description: A flexible theme with a responsive, mobile-first layout.
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9
+# Ajout des librairies
+libraries:
+  - drush_site_install/vendor-style
+  - drush_site_install/global-style
+regions:
+  header: "Header"
+  primary_menu: "Primary menu"
+  secondary_menu: "Secondary menu"
+  breadcrumb: "Breadcrumb"
+  slider: "Slider"
+  content: "Content"
+  sidebar_right: "Sidebar first"
+  bottom: "before footer"
+  footer: "Footer"

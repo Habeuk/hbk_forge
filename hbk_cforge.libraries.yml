@@ -1,0 +1,16 @@
+# Main theme library.
+global-style:
+  css:
+    theme:
+      css/global-style.css: {}
+  js:
+    js/global-style.js: { preprocess: false }
+  dependencies:
+    - core/once
+
+vendor-style:
+  css:
+    theme:
+      css/vendor-style.css: {}
+  js:
+    js/vendor-style.js: { preprocess: false }
