@@ -1,0 +1,14 @@
+{
+  "name": "habeuk/hbk_cforge",
+  "description": "theme pour cforge",
+  "type": "drupal-custom-theme",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "vystii",
+      "email": "ngahabanda@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {}
+}

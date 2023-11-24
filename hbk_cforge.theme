@@ -1,5 +1,8 @@
 <?php
 
+use Drupal\Core\Theme\ThemeManagerInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
 /**
  * @file
  * Functions to support theming in the HBK cforge theme.
@@ -9,19 +12,30 @@
  * Implements hook_preprocess_HOOK() for html.html.twig.
  */
 function hbk_cforge_preprocess_html(&$variables) {
-
 }
 
 /**
  * Implements hook_preprocess_HOOK() for page.html.twig.
  */
 function hbk_cforge_preprocess_page(&$variables) {
-
 }
 
 /**
  * Implements hook_preprocess_HOOK() for node.html.twig.
  */
 function hbk_cforge_preprocess_node(&$variables) {
+}
 
+/**
+ * Implements hook_theme_suggestions_menu_alter().
+ */
+function hbk_cforge_theme_suggestions_menu_alter(array &$suggestions, array $variables) {
+    // // Récupérer les informations de suggestion de menu existantes
+    // // Ajouter une suggestion de menu personnalis￩e avec les informations reçues
+    // if ($variables["menu_name"] === "main") {
+    //     # code...
+    //     $CustomSuggestions = 'my__menu';
+    //     $suggestions[] = $CustomSuggestions;
+    //     dump($suggestions);
+    // }
 }
