@@ -39,3 +39,29 @@ function hbk_cforge_theme_suggestions_menu_alter(array &$suggestions, array $var
     //     dump($suggestions);
     // }
 }
+
+/**
+ * Implements hook_theme() to define the theme hook for the slider_block.
+ */
+function hbk_cforge_theme($existing, $type, $theme, $path) {
+    // dump([$existing, $type, $theme, $path]);
+    return [
+        'slider_block' => [
+            'variables' => [
+                'content' => [],
+            ],
+        ],
+    ];
+}
+
+/**
+ * Theme function for the slider_block.
+ */
+function theme_slider_block($variables) {
+    $content = $variables['content'];
+
+    // Build the HTML output for the slider_block.
+    // ...
+
+    return $content;
+}

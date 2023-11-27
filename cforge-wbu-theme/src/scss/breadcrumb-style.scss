@@ -1,0 +1,10 @@
+@use "./variables.scss";
+@use "@stephane888/wbu-atomique/scss/wbu-ressources-clean.scss" as *;
+
+.breadcrumb {
+    svg {
+        color: $gray-600;
+        width: 20px;
+        aspect-ratio: 1;
+    }
+}

@@ -1,10 +1,9 @@
 name: HBK cforge
 type: theme
-base theme: classy
+base theme: starterkit_theme
 description: A flexible theme with a responsive, mobile-first layout.
 package: Custom
-core: 8.x
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^10
 # Ajout des librairies
 libraries:
   - hbk_cforge/vendor-style

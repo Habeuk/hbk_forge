@@ -26,6 +26,8 @@ module.exports = {
     "global-style": "./src/js/global-style.js",
     "vendor-style": "./src/js/vendor-style.js",
     "menu-style": "./src/js/menu-style.js",
+    "slider-style": "./src/js/slider-style.js",
+    "breadcrumb-style": "./src/js/breadcrumb-style.js",
   },
   output: {
     path: path.resolve(__dirname, "../"),

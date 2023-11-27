@@ -21,3 +21,17 @@ menu-style:
       css/menu-style.css: {}
   js:
     js/menu-style.js: { preprocess: false }
+
+slider-style:
+  css:
+    theme:
+      css/slider-style.css: {}
+  js:
+    js/slider-style.js: { preprocess: false }
+
+breadcrumb-style:
+  css:
+    theme:
+      css/breadcrumb-style.css: {}
+  js:
+    js/breadcrumb-style.js: { preprocess: false }
