@@ -55,6 +55,15 @@
  * @ingroup themeable
  */
 #}
+{% if not page.sidebar_right %}
+	{% set my_check = true %}
+	{% set content_flex_class = "col-sm-8" %}
+
+	{% set content_flex_disposition = "justify-content-between" %}
+{% else %}
+	{% set content_flex_disposition = "justify-content-around" %}
+	{% set content_flex_class = "col-sm-8" %}
+{% endif %}
 
 <div id="wrapper">
 	<header role="banner">
@@ -90,8 +99,11 @@
 
 
 	<div class="page-body container">
-		<div class="row justify-content-between">
-			<main role="main" id="main" class="col-sm-8">
+		<div class="row {{content_flex_disposition}}">
+
+
+			<main role="main" id="main" class="{{content_flex_class}}">
+
 				<div
 					id="main-inner">
 					<!--page content-->

@@ -35,3 +35,17 @@ breadcrumb-style:
       css/breadcrumb-style.css: {}
   js:
     js/breadcrumb-style.js: { preprocess: false }
+
+teaser-style:
+  css:
+    theme:
+      css/teaser-style.css: {}
+  js:
+    js/teaser-style.js: { preprocess: false }
+
+text-image-style:
+  css:
+    theme:
+      css/text-image-style.css: {}
+  js:
+    js/text-image-style.js: { preprocess: false }

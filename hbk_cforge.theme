@@ -2,6 +2,8 @@
 
 use Drupal\Core\Theme\ThemeManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\file\Entity\File;
+use Drupal\image\Entity\ImageStyle;
 
 /**
  * @file
@@ -21,9 +23,32 @@ function hbk_cforge_preprocess_page(&$variables) {
 }
 
 /**
+ * Implements hook_preprocess_HOOK() for views_view.html.twig
+ */
+function hbk_cforge_preprocess_views_view(&$variables) {
+    // dump($variables);
+}
+
+/**
  * Implements hook_preprocess_HOOK() for node.html.twig.
  */
 function hbk_cforge_preprocess_node(&$variables) {
+    $image_id = $variables["content"]["field_image"][0]["#item"]->getvalue()["target_id"];
+    unset($variables["content"]["field_image"]);
+    $file = File::load($image_id);
+    $imageStyle = ImageStyle::load('large');
+    $uri = $imageStyle->buildUrl($file->getFileUri());
+
+    $variables["content"]["image"] = [
+        '#theme' => 'image',
+        '#uri' => $uri,
+        '#alt' => 'Description de l\'image',
+    ];
+    /**
+     * @var \Drupal\Node\Entity\Node $image_entity
+     */
+    // $image_entity = $variables["content"]["image"]["#object"];
+    // dump([$imageStyle, $file, $file->getFileUri()]);
 }
 
 /**
