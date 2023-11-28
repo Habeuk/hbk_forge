@@ -3,10 +3,9 @@
      * Example : $wbu-h1-font-size est definie ici, les derivées $wbu-h1-font-size-md, $wbu-h1-font-size-sm vont etre
      * egalement surcharger.
      */
-
 @import "@stephane888/wbu-atomique/scss/_variables.scss";
 //color
-$wbu-color-primary: cyan;
+$wbu-color-primary: #6f42c1;
 $wbu-color-secondary: #DD731D;
 $wbu-color-thirdly: #F88C12;
 $wbu-background: #0F103E;

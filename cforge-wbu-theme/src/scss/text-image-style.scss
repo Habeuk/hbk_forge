@@ -1,0 +1,21 @@
+@use "./drush_site_install_variables.scss" as *;
+
+.block-hbk-cforge-mod-block-text-image {
+    position: relative;
+    background-color: $gray-200;
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 50px;
+        aspect-ratio: 1;
+        bottom: 0;
+        transform: rotate(45deg) translate(-50%, 58px);
+        background-color: $gray-200;
+        left: 54%;
+    }
+
+    &>div {
+        padding-block: 50px;
+    }
+}

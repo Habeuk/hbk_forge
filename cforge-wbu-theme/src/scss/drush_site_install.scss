@@ -1,3 +1,34 @@
+@use "./drush_site_install_variables.scss" as *;
+@use "./custom.scss";
 
-    @use "./drush_site_install_variables.scss" as *;
-    @use "./custom.scss";
+.cforge-bg-light {
+    background-color: $light !important;
+
+    &::before {
+        background-color: $light !important;
+    }
+}
+
+.cforge-bg-gray-200 {
+    background-color: $gray-200 !important;
+
+    &::before {
+        background-color: $gray-200 !important;
+    }
+}
+
+.cforge-bg-gray-300 {
+    background-color: $gray-300 !important;
+
+    &::before {
+        background-color: $gray-300 !important;
+    }
+}
+
+.cforge-bg-gray-400 {
+    background-color: $gray-400 !important;
+
+    &::before {
+        background-color: $gray-400 !important;
+    }
+}

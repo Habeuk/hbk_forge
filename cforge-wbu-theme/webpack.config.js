@@ -28,6 +28,8 @@ module.exports = {
     "menu-style": "./src/js/menu-style.js",
     "slider-style": "./src/js/slider-style.js",
     "breadcrumb-style": "./src/js/breadcrumb-style.js",
+    "teaser-style": "./src/js/teaser-style.js",
+    "text-image-style": "./src/js/text-image-style.js",
   },
   output: {
     path: path.resolve(__dirname, "../"),

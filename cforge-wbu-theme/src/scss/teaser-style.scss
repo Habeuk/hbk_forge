@@ -1,0 +1,12 @@
+@use "@stephane888/wbu-atomique/scss/organisme/sections/theme_builder/f_news/molecule/teaser/metro-service.scss";
+
+.metro-service {
+    .metro-service__img {
+        margin-bottom: 0;
+    }
+
+    .metro-service__body {
+        padding: 0 2rem;
+        bottom: 0;
+    }
+}
