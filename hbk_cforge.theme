@@ -4,6 +4,8 @@ use Drupal\Core\Theme\ThemeManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\file\Entity\File;
 use Drupal\image\Entity\ImageStyle;
+use Drupal\Core\Url;
+use Drupal\Core\Routing\UrlMatcher;
 
 /**
  * @file
@@ -25,25 +27,37 @@ function hbk_cforge_preprocess_page(&$variables) {
 /**
  * Implements hook_preprocess_HOOK() for views_view.html.twig
  */
-function hbk_cforge_preprocess_views_view(&$variables) {
-    // dump($variables);
+function hbk_cforge_preprocess_views_view_unformatted(&$variables) {
+    /**
+     * @var Symfony\Component\HttpFoundation\RequestStack $request_stack
+     */
+    $request_stack = \Drupal::service('request_stack');
+    $current_request = $request_stack->getCurrentRequest();
+    $current_url = $current_request;
+
+    if ($current_url->getPathInfo()) {
+        $variables["is_home"] = TRUE;
+    };
 }
 
 /**
  * Implements hook_preprocess_HOOK() for node.html.twig.
  */
 function hbk_cforge_preprocess_node(&$variables) {
-    $image_id = $variables["content"]["field_image"][0]["#item"]->getvalue()["target_id"];
-    unset($variables["content"]["field_image"]);
-    $file = File::load($image_id);
-    $imageStyle = ImageStyle::load('large');
-    $uri = $imageStyle->buildUrl($file->getFileUri());
+    if (isset($variables['content']['field_image']) && !isset($variables['content']['image'])) {
 
-    $variables["content"]["image"] = [
-        '#theme' => 'image',
-        '#uri' => $uri,
-        '#alt' => 'Description de l\'image',
-    ];
+        $image_id = $variables["content"]["field_image"][0]["#item"]->getvalue()["target_id"];
+        unset($variables["content"]["field_image"]);
+        $file = File::load($image_id);
+        $imageStyle = ImageStyle::load('large');
+        $uri = $imageStyle->buildUrl($file->getFileUri());
+
+        $variables["content"]["image"] = [
+            '#theme' => 'image',
+            '#uri' => $uri,
+            '#alt' => 'Description de l\'image',
+        ];
+    }
     /**
      * @var \Drupal\Node\Entity\Node $image_entity
      */

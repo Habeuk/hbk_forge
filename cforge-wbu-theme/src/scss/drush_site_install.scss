@@ -32,3 +32,85 @@
         background-color: $gray-400 !important;
     }
 }
+
+.with-svg {
+    position: relative;
+    background-color: $light;
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 50px;
+        aspect-ratio: 1;
+        bottom: 0;
+        transform: translate(-50%, 50%) rotate(45deg);
+        background-color: $light;
+        left: 50%;
+        z-index: 1;
+    }
+}
+
+.page-front-body {
+    padding-block: 100px 70px;
+}
+
+.block-social-link {
+    .socials--field {
+        gap: 10px;
+
+        .social-link {
+            border: 2px solid $gray-600;
+            padding: 5px;
+            color: $gray-600;
+            border-radius: 50%;
+            transition: all .3s ease;
+
+            svg {
+                width: 32px;
+                aspect-ratio: 1;
+            }
+
+            &:hover {
+                color: $wbu-color-primary;
+                border-color: $wbu-color-primary;
+            }
+        }
+    }
+}
+
+
+.page-footer {
+
+    .cforge-footer-content {
+        a {
+            color: $wbu-color-secondary;
+
+            &:hover {
+                color: $wbu-color-thirdly;
+            }
+        }
+    }
+
+    .cforge-footer-col {
+        gap: 30px;
+    }
+}
+
+nav {
+
+    ul.cforge-menu {
+        margin: 0;
+        margin-left: 0;
+
+        .menu-item {
+            a {
+                color: inherit;
+
+                &:hover {
+                    color: $wbu-color-thirdly;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}

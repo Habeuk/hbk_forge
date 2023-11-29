@@ -11,10 +11,11 @@ libraries:
 regions:
   header: "Header"
   primary_menu: "Primary menu"
-  secondary_menu: "Secondary menu"
   breadcrumb: "Breadcrumb"
   slider: "Slider"
+  top: "Top Region"
   content: "Content"
   sidebar_right: "Sidebar first"
   bottom: "before footer"
+  footer_col: "Footer en colonnes"
   footer: "Footer"

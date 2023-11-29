@@ -110,26 +110,24 @@
 </article> #}
 
 {{attach_library("hbk_cforge/teaser-style")}}
+
 <div class="metro-service">
 	<div class="metro-service__img">
 		<a href="{{url}}" class=" ">
 			{{content.image}}
-			{# <img src="https://demo.morethanthemes.com/flashyplus-news8/default/sites/default/files/styles/mt_metro_tile_square/public/2019-07/mt-service-teaser-1.jpg?itok=imyoNul2" alt=""> #}
 		</a>
 	</div>
 	<div class="metro-service__body ">
 		<div href="{{url}}" class="node-title">
-			<a href="{{url}}">
 				{% if label and not page %}
 					<h2{{title_attributes}}>
 						<a href="{{ url }}" rel="bookmark">{{ label }}</a>
 					</h2>
 				{% endif %}
 				<div{{content_attributes.addClass('node__content')}}>
-					{{ content }}
-				</div>
+<a href="{{url}}">{{ content }}</a>
 
-			</a>
+				</div>
 		</div>
 		{# <div class="head-nav">
 									<div class="link-label">

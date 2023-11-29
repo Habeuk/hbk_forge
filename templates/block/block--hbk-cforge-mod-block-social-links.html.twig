@@ -1,0 +1,102 @@
+{#
+/**
+ * @file
+ * Theme override to display a block.
+ *
+ * Available variables:
+ * - plugin_id: The ID of the block implementation.
+ * - label: The configured label of the block if visible.
+ * - configuration: A list of the block's configuration values.
+ *   - label: The configured label for the block.
+ *   - label_display: The display settings for the label.
+ *   - provider: The module or other provider that provided this block plugin.
+ *   - Block plugin specific settings will also be stored here.
+ * - in_preview: Whether the plugin is being rendered in preview mode.
+ * - content: The content of this block.
+ * - attributes: array of HTML attributes populated by modules, intended to
+ *   be added to the main container tag of this template.
+ *   - id: A valid HTML ID and guaranteed unique.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @see template_preprocess_block()
+ */
+#}
+{# {{attach_library("hbk_cforge/text-image-style")}} #}
+{%
+  set classes = [
+    content.bg_style,
+	  content.show_bottom_svg? "with-svg": "no-svg",
+    'block-social-link',
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+  ]
+%}
+<div{{attributes.addClass(classes)}}>
+	{{ title_prefix }}
+	{% if label %}
+		<h2{{title_attributes}}>{{ label }}</h2>
+	{% endif %}
+	{{ title_suffix }}
+	{% block content %}
+		<div class="container py-5">
+			<div class="row justify-content-between">
+				<div class="col-sm-5  justify-content-between text-center text-sm-left">
+          <div class="d-flex flex-column h-100 justify-content-center">
+				  	<span class='h5 mb-0'>{{content.title}}</span>
+          </div>
+				</div>
+				<div class="col-sm-5 text-center">
+          <div class="d-flex justify-content-sm-end justify-content-center align-content-center  socials--field">
+              {% if content.socials.facebook %}
+              	<a href="{{content.socials.facebook}}" class="facebook social-link">
+                  <svg fill="currentColor" viewbox="-7 -2 24 24" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMinYMin" class="jam jam-facebook"><path d="M2.046 3.865v2.748H.032v3.36h2.014v9.986H6.18V9.974h2.775s.26-1.611.386-3.373H6.197V4.303c0-.343.45-.805.896-.805h2.254V0H6.283c-4.34 0-4.237 3.363-4.237 3.865z"/></svg>
+                </a>
+              {% endif %}
+              {% if content.socials.x %}
+              	<a href="{{content.socials.x}}" class="twitter social-link">
+                  <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M21.63 6.92a1 1 0 0 0-.83-.2 8.31 8.31 0 0 1-1.1.17 4.49 4.49 0 0 0-8.55.52c-2.73.67-5.4-2.07-5.43-2.1a1 1 0 0 0-1-.27 1 1 0 0 0-.7.8 11.69 11.69 0 0 0 1.51 8.67A7.25 7.25 0 0 1 3 15a1 1 0 0 0-.89 1.46c.19.37 2.07 3.54 9.47 3.54 5.84 0 8-5.2 8.36-8.38A4 4 0 0 0 22 7.7a1 1 0 0 0-.37-.78Z"/></svg>
+                </a>
+              {% endif %}
+              {% if content.socials.youtube %}
+                <a href="{{content.socials.youtube}}" class="youtube social-link">
+                  <svg fill="currentColor" viewbox="-2 -5 24 24" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMinYMin" class="jam jam-youtube"><path d="M15.812.017H4.145C1.855.017 0 1.852 0 4.116v5.768c0 2.264 1.856 4.1 4.145 4.1h11.667c2.29 0 4.145-1.836 4.145-4.1V4.116c0-2.264-1.856-4.1-4.145-4.1zM13.009 7.28 7.552 9.855a.219.219 0 0 1-.314-.196V4.35a.22.22 0 0 1 .318-.193l5.458 2.735a.216.216 0 0 1-.005.389z"/></svg>
+                </a>
+              {% endif %}
+              {% if content.socials.linkedin %}
+                <a href="{{content.socials.linkedin}}" class="linkedin social-link">
+                  <svg viewbox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h20v20H0z"/><path d="M2.5 18h3V6.9h-3V18zM4 2c-1 0-1.8.8-1.8 1.8S3 5.6 4 5.6s1.8-.8 1.8-1.8S5 2 4 2zm6.6 6.6V6.9h-3V18h3v-5.7c0-3.2 4.1-3.4 4.1 0V18h3v-6.8c0-5.4-5.7-5.2-7.1-2.6z"/></svg>
+                </a>
+              {% endif %}
+              {% if content.socials.github %}
+                <a href="{{content.socials.github}}" class="github social-link">
+                  <svg fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"><path d="M12 2.247a10 10 0 0 0-3.162 19.487c.5.088.687-.212.687-.475 0-.237-.012-1.025-.012-1.862-2.513.462-3.163-.613-3.363-1.175a3.636 3.636 0 0 0-1.025-1.413c-.35-.187-.85-.65-.013-.662a2.001 2.001 0 0 1 1.538 1.025 2.137 2.137 0 0 0 2.912.825 2.104 2.104 0 0 1 .638-1.338c-2.225-.25-4.55-1.112-4.55-4.937a3.892 3.892 0 0 1 1.025-2.688 3.594 3.594 0 0 1 .1-2.65s.837-.262 2.75 1.025a9.427 9.427 0 0 1 5 0c1.912-1.3 2.75-1.025 2.75-1.025a3.593 3.593 0 0 1 .1 2.65 3.869 3.869 0 0 1 1.025 2.688c0 3.837-2.338 4.687-4.563 4.937a2.368 2.368 0 0 1 .675 1.85c0 1.338-.012 2.413-.012 2.75 0 .263.187.575.687.475A10.005 10.005 0 0 0 12 2.247Z"/></svg>
+                </a>
+              {% endif %}
+              {% if content.socials.instagram %}
+                <a href="{{content.socials.instagram}}" class="instagram social-link">
+                  <svg style="padding: 4px;" fill="currentColor" viewbox="0 0 512 512" data-name="66 Instagram" xmlns="http://www.w3.org/2000/svg"><path data-name="Path 86" d="M480 0H32A31.981 31.981 0 0 0 0 32v448a31.981 31.981 0 0 0 32 32h448a31.981 31.981 0 0 0 32-32V32a31.981 31.981 0 0 0-32-32ZM192 256s5.062-64 64-64 64 64 64 64 1.844 64-64 64-64-64-64-64Zm256 192H64V224h68.531a128.013 128.013 0 1 0 246.938 0H448Zm0-288h-96V64h96Z" fill-rule="evenodd"/></svg>
+                </a>
+              {% endif %}
+              {% if content.socials.snapchat %}
+                <a href="{{content.socials.snapchat}}" class="snapchat social-link">
+                	<svg fill="currentColor" viewbox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="m16.257 1.995.099-.001a7.986 7.986 0 0 1 7.291 4.725l.02.051c.333 1.18.524 2.534.524 3.934 0 .749-.055 1.485-.161 2.205l.01-.082-.004.075c-.015.225-.027.431-.037.637a.954.954 0 0 0 .456.114l.048-.001h-.002a3.52 3.52 0 0 0 1.31-.385l-.019.009a1.23 1.23 0 0 1 .554-.13h.027-.001.026c.219 0 .429.041.622.117l-.012-.004c.496.117.868.532.917 1.042v.005q.028.842-1.516 1.46c-.111.036-.261.094-.43.149-.562.169-1.423.45-1.666 1.012a1.303 1.303 0 0 0 .153 1.09l-.003-.005.019.019c1.117 2.493 3.286 4.344 5.926 5.003l.061.013a.625.625 0 0 1 .525.616v.021-.001a.753.753 0 0 1-.058.286l.002-.005c-.3.711-1.591 1.235-3.931 1.588a3.238 3.238 0 0 0-.202.692l-.003.02a5.16 5.16 0 0 1-.177.727l.01-.036a.656.656 0 0 1-.696.505h.002-.037a3.978 3.978 0 0 1-.699-.098l.027.005a7.361 7.361 0 0 0-1.586-.169h-.005l-.082-.001c-.374 0-.74.034-1.096.099l.037-.006a5.609 5.609 0 0 0-2.162 1.112l.009-.007a6.768 6.768 0 0 1-4.102 1.609h-.014c-.075 0-.149-.019-.225-.019h-.186a6.63 6.63 0 0 1-4.106-1.617l.008.007a5.524 5.524 0 0 0-2.094-1.096l-.039-.009a7.887 7.887 0 0 0-1.156-.092h-.004a7.874 7.874 0 0 0-1.642.196l.053-.01c-.199.049-.43.082-.667.092h-.007a.698.698 0 0 1-.727-.52l-.001-.005c-.076-.24-.112-.486-.169-.709a3.256 3.256 0 0 0-.216-.734l.008.022c-2.397-.277-3.686-.802-3.985-1.532a.74.74 0 0 1-.069-.279v-.025a.62.62 0 0 1 .522-.612h.004a8.856 8.856 0 0 0 5.965-4.968l.022-.056.02-.036a1.26 1.26 0 0 0 .147-1.095l.003.009c-.244-.542-1.105-.822-1.665-1.011a2.724 2.724 0 0 1-.45-.156l.018.007c-1.383-.544-1.571-1.162-1.496-1.591a1.48 1.48 0 0 1 1.395-.992l.068.002h-.003.004c.171 0 .334.034.483.096l-.008-.003c.401.211.871.346 1.371.374h.009l.039.001c.198 0 .385-.049.549-.135l-.006.003-.057-.711a15.044 15.044 0 0 1 .408-6.15l-.025.106C9.561 3.941 12.325 2.01 15.54 2.01l.131.001h-.007l.524-.019h.075z"/></svg>
+                </a>
+              {% endif %}
+              {% if content.socials.pinterest %}
+                <a href="{{content.socials.pinterest}}" class="pinterest social-link">
+                	<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewbox="0 0 1200 1200" xml:space="preserve"><path d="M600 0c356.454 6.666 597.673 280.025 600 600-6.375 340.923-280.025 597.673-600 600-59.191-.229-116.981-9.442-169.763-24.622 11.23-18.143 22.462-38.229 33.692-60.259 23.688-48.151 34.503-99.721 46.652-149.028 5.184-21.166 12.527-49.028 22.03-83.585 10.366 19.87 29.157 37.148 56.372 51.835 71.035 34.562 159.039 23.145 222.246-9.071 88.677-50.367 140.639-128.602 168.467-216.413 53.582-203.643-15.51-399.439-200.217-478.187-222.716-67.084-471.27 16.639-557.883 215.768-37.816 133.072-35.578 303.927 95.896 359.61 6.915 2.592 13.178 2.592 18.79 0 12.34-7.05 26.651-68.155 23.975-80.993-.864-3.888-3.888-9.288-9.071-16.198-72.663-98.369-28.379-244.763 39.524-318.144 115.467-99.179 295.177-115.283 401.08-20.734 93.934 109.584 72.6 280.13 12.311 388.77-33.312 53.126-78 93.273-138.013 93.952-63.17-1.398-110.815-54.854-94.601-115.334 13.779-70.979 52.015-146.255 53.132-212.527-3.053-55.122-30.656-90.083-81.643-90.713-81.388 10.263-114.242 86.357-115.335 155.508 2.603 33.23 4.618 67.054 19.438 94.602-17.278 69.979-30.67 126.35-40.173 169.114-14.567 75.873-43.132 155.229-47.3 228.726-1.296 24.189-1.513 46.651-.648 67.387C136.638 1044.027 1.314 838.081 0 600 6.476 253.707 280.025 2.327 600 0z"/></svg>
+                </a>
+              {% endif %}
+          </div>
+        </div>
+			</div>
+		</div>
+	{% endblock %}
+</div>
+

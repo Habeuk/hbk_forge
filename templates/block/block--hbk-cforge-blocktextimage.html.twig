@@ -30,12 +30,12 @@
 {%
   set classes = [
     content.bg_style,
+	content.show_bottom_svg? "with-svg": "no-svg",
     'block',
     'block-' ~ configuration.provider|clean_class,
     'block-' ~ plugin_id|clean_class,
   ]
 %}
-
 <div{{attributes.addClass(classes)}}>
 	{{ title_prefix }}
 	{% if label %}
@@ -48,7 +48,7 @@
 				<div class="col-sm-8 text-center text-sm-left">
 					<h3>{{content.title}}</h3>
 					<div>
-						{{content.body}}
+						{{content.body.value | raw}}
 					</div>
 				</div>
 				<div class="col-sm-4 text-center">{{content.image}}</div>

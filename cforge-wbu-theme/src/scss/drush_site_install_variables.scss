@@ -3,15 +3,14 @@
      * Example : $wbu-h1-font-size est definie ici, les derivées $wbu-h1-font-size-md, $wbu-h1-font-size-sm vont etre
      * egalement surcharger.
      */
-@import "@stephane888/wbu-atomique/scss/_variables.scss";
+// @import "@stephane888/wbu-atomique/scss/_variables.scss";
 //color
-$wbu-color-primary: #6f42c1;
-$wbu-color-secondary: #DD731D;
-$wbu-color-thirdly: #F88C12;
+$wbu-color-primary: #008080;
+$wbu-color-secondary: rgb(177, 48, 48);
+$wbu-color-thirdly: navy;
 $wbu-background: #0F103E;
 $wbu-link-color: $wbu-color-primary;
 $wbu-bootstrap-primary: $wbu-color-primary;
-
 // Police
 $wbu-h1-font-size: 4.4rem;
 $wbu-h2-font-size: 3.4rem;
