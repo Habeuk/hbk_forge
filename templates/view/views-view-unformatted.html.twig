@@ -22,7 +22,8 @@
 {% for row in rows %}
 	{%
     set row_classes = [
-		default_row_class ?'views-row' ~ is_home ? 'col-md-3': 'col-md-6',
+		default_row_class ?'views-row' ,
+		'unformatted-view-article'
     ]
   %}
 	<div{{row.attributes.addClass(row_classes)}}>

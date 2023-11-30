@@ -55,14 +55,13 @@
  * @ingroup themeable
  */
 #}
-{% if not page.sidebar_right %}
+{% if page.sidebar_right %}
 	{% set my_check = true %}
 	{% set content_flex_class = "col-sm-8" %}
-
 	{% set content_flex_disposition = "justify-content-between" %}
 {% else %}
 	{% set content_flex_disposition = "justify-content-around" %}
-	{% set content_flex_class = "col-sm-8" %}
+	{% set content_flex_class = "full-content no-side-region" %}
 {% endif %}
 
 <div id="wrapper">
@@ -97,8 +96,13 @@
 		</div>
 	{% endif %}
 
+	{% if page.top %}
+		<div id="page-top-region">
+			{{ page.top }}
+		</div>
+	{% endif %}
 
-	<div class="page-body container">
+	<div class="page-body container pt-4">
 		<div class="row {{content_flex_disposition}}">
 
 
@@ -124,10 +128,19 @@
 			{{page.bottom}}
 		</div>
 	{% endif %}
-	{% if page.footer %}
-		<footer id='page-footer'>
-			<div id="footer-content">
-				{{ page.footer }}
+	{% if page.footer or page.footer_col %}
+		<footer id='page-footer' class=" pt-5 pb-2 bg-primary text-light page-footer">
+			<div class="container">
+				{% if page.footer_col %}
+					<div class="d-flex cforge-footer-col">
+						{{page.footer_col}}
+					</div>
+				{% endif %}
+				{% if page.footer %}
+					<div id="footer-content" class="cforge-footer-content text-center">
+						{{ page.footer }}
+					</div>
+				{% endif %}
 			</div>
 		</footer>
 	{% endif %}

@@ -28,6 +28,9 @@ function hbk_cforge_preprocess_page(&$variables) {
  * Implements hook_preprocess_HOOK() for views_view.html.twig
  */
 function hbk_cforge_preprocess_views_view_unformatted(&$variables) {
+    $route_match = \Drupal::service('current_route_match');
+    $page_entity = $route_match->getParameters()->all();
+    // dump($variables["view"]);
     /**
      * @var Symfony\Component\HttpFoundation\RequestStack $request_stack
      */
@@ -57,6 +60,19 @@ function hbk_cforge_preprocess_node(&$variables) {
             '#uri' => $uri,
             '#alt' => 'Description de l\'image',
         ];
+    }
+    if (isset($variables['content']['field_tags']) && !isset($variables['tags'])) {
+        $i = 0;
+        $variables['content']['tags'] = [];
+        $tags = $variables['content']['field_tags'];
+        while (isset($tags[$i])) {
+            $variables['content']['tags'][] = $tags[$i++];
+        }
+        unset($variables['content']['field_tags']);
+    }
+    if (!Drupal::currentUser()->isAuthenticated() && empty($variables["content"]["comment"][0]["comments"])) {
+        // dump($variables["content"]["comment"][0]);
+        unset($variables["content"]["comment"]);
     }
     /**
      * @var \Drupal\Node\Entity\Node $image_entity
@@ -103,4 +119,21 @@ function theme_slider_block($variables) {
     // ...
 
     return $content;
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function hbk_cforge_views_pre_render(\Drupal\views\ViewExecutable $view) {
+    // Vérifiez si la vue est la vue souhaitée.
+    // Obtenez le contenu des régions.
+
+    // dump(\Drupal::service('renderer'));
+    // dump($view);    
+    // $header_content = \Drupal::service('renderer')->renderRoot($view->header['area']);
+    // $footer_content = \Drupal::service('renderer')->renderRoot($view->footer['area']);
+
+    // // Faites quelque chose avec le contenu des régions, par exemple l'ajouter aux résultats de la vue.
+    // $view->attachment_before = $header_content;
+    // $view->attachment_after = $footer_content;
 }
