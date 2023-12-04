@@ -1,0 +1,58 @@
+{#
+/**
+ * @file
+ * Theme override for a details element.
+ *
+ * Available variables
+ * - attributes: A list of HTML attributes for the details element.
+ * - errors: (optional) Any errors for this details element, may not be set.
+ * - title: (optional) The title of the element, may not be set.
+ * - summary_attributes: A list of HTML attributes for the summary element.
+ * - description: (optional) The description of the element, may not be set.
+ * - children: (optional) The children of the element, may not be set.
+ * - value: (optional) The value of the element, may not be set.
+ *
+ * @see template_preprocess_details()
+ */
+#}
+
+{% set toggle_class = "" %}
+{% set field_set_id = title|title|replace({' ': ''}) %}
+<div{{attributes}}>
+	{%- if title -%}
+		{%
+      set summary_classes = [
+        required ? 'js-form-required',
+        required ? 'form-required',
+      ]
+    %}
+		{% set toggle_class = "collapse" %}
+		<legend{{summary_attributes.addClass(summary_classes)}}>
+			<button class="btn btn-outline-primary w-100 text-left" type="button" data-toggle="collapse" data-target="#{{field_set_id}}" aria-expanded="false" aria-controls="{{field_set_id}}">
+
+				<span{{legend_span.attributes.addClass(legend_span_classes)}}>
+					{{ title }}
+				</span>
+			</button>
+		</legend>
+
+	{%- endif -%}
+	<div class="collapse border px-5" id="{{field_set_id}}">
+		<div class="details-wrapper">
+			{% if errors %}
+				<div class="form-item--error-message">
+					<strong>{{ errors }}</strong>
+				</div>
+			{% endif %}
+			{%- if description -%}
+				<div class="details-description">{{ description }}</div>
+			{%- endif -%}
+			{%- if children -%}
+				{{ children }}
+			{%- endif -%}
+			{%- if value -%}
+				{{ value }}
+			{%- endif -%}
+		</div>
+	</div>
+</div>

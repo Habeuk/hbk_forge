@@ -1,6 +1,7 @@
 @use "./drush_site_install_variables.scss" as *;
 @use "@stephane888/wbu-atomique/scss/bootstrap-all.scss";
 @use "./custom.scss";
+@use "./input-style.scss";
 @use "./node--full.scss";
 
 .cforge-bg-light {
@@ -163,6 +164,61 @@ h1.page-title {
                     background-color: $wbu-color-primary;
                     color: $light;
                 }
+            }
+        }
+    }
+}
+
+article.comment {
+    border-top: 1px solid $gray-400;
+}
+
+.indented {
+    article.comment {
+        position: relative;
+        border: none;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: -25px;
+            width: 10px;
+            background-color: $wbu-color-primary;
+        }
+    }
+}
+
+.comment__meta {
+    .comment-user-profil {
+        gap: 20px;
+
+        .user-initial {
+            width: 50px;
+            aspect-ratio: 1;
+            position: relative;
+            border-radius: 50%;
+            background-color: $gray-600;
+            color: $light;
+            font-weight: bold;
+            line-height: 3rem;
+            font-size: 3rem;
+
+            img {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+            }
+
+            span {
+                line-height: inherit;
+                font-size: inherit;
+                left: 0;
+                right: 0;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
             }
         }
     }

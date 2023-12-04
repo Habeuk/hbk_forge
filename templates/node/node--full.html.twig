@@ -126,13 +126,17 @@
 
 			{% if content.comment %}
 				{% if content.comment[0]["comments"] %}
-					<div class="comments mt-sm-5">
+					<div class="comments mt-sm-5 mb-5">
 						{{content.comment[0]["comments"]}}
 					</div>
 				{% endif %}
 				{% if content.comment[0]["comment_form"] %}
-					<div class="comment-form">
-						{{content.comment[0]["comment_form"]}}
+					<div class="node-comment-form">
+						<div class="d-flex justify-content-center border mb-5 py-5">
+							<div class="w-75 comment-form">
+								{{content.comment[0]["comment_form"]}}
+							</div>
+						</div>
 					</div>
 				{% endif %}
 			{% endif %}

@@ -8,5 +8,9 @@
     .metro-service__body {
         padding: 0 2rem;
         bottom: 0;
+
+        .head-nav {
+            gap: 5px;
+        }
     }
 }

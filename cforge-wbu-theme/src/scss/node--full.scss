@@ -1,4 +1,5 @@
 @use "./drush_site_install_variables.scss" as *;
+@use "@stephane888/wbu-atomique/scss/bootstrap-all.scss";
 
 .cforge--node-full {
     .main-node {
@@ -15,7 +16,7 @@
 
         &::before {
             position: absolute;
-            content: "";
+            // content: "";
             left: 12.5%;
             right: 12.5%;
             bottom: 0;
@@ -59,6 +60,29 @@
                     // color: #313131 !important;
                     text-decoration: none;
                     border: 2px solid $wbu-color-primary;
+                }
+            }
+        }
+
+    }
+
+    .node-comment-form {
+        .comment-form {
+            input {
+                max-width: 100%;
+            }
+
+            .form-actions {
+                input {
+                    @extend .btn, .px-5;
+                }
+
+                &>input {
+                    @extend .btn-primary;
+
+                    &+input {
+                        @extend .btn-secondary;
+                    }
                 }
             }
         }

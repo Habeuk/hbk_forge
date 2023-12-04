@@ -6,6 +6,7 @@ use Drupal\file\Entity\File;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\Core\Url;
 use Drupal\Core\Routing\UrlMatcher;
+use Google\Service\HangoutsChat\Resource\Dms;
 
 /**
  * @file
@@ -122,6 +123,14 @@ function theme_slider_block($variables) {
 }
 
 /**
+ * Implements hook_block()
+ */
+function hbk_cforge_preprocess_block($variables) {
+    // dump($variables);
+}
+
+
+/**
  * Implements hook_views_pre_render().
  */
 function hbk_cforge_views_pre_render(\Drupal\views\ViewExecutable $view) {
@@ -136,4 +145,30 @@ function hbk_cforge_views_pre_render(\Drupal\views\ViewExecutable $view) {
     // // Faites quelque chose avec le contenu des régions, par exemple l'ajouter aux résultats de la vue.
     // $view->attachment_before = $header_content;
     // $view->attachment_after = $footer_content;
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for views_view.html.twig
+ */
+function hbk_cforge_preprocess_comment__comment(&$variables) {
+    /**
+     * @var \Drupal\User\Entity\User $user
+     */
+    $user = \Drupal::entityTypeManager()->getStorage("user")->load(2);
+    $variables["user_name"] = $user->getAccountName();
+    $variables["has_profile_picture"] = $user->get("user_picture")->entity ? TRUE : FALSE;
+    // dump($variables);
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for views_view.html.twig
+ */
+function hbk_cforge_preprocess_fieldset(&$variables) {
+    /**
+     * @var Drupal\Core\StringTranslation\TranslatableMarkup $markup
+     */
+    $markup =  $variables["legend"]["title"]["#markup"];
+    $string_title = preg_replace('/[^A-Za-z0-9\-]/', '', (string) $markup);
+    $variables["legend"]["string_title"] = $string_title . (string) rand(1000, 9999);
+    // dump($variables["legend"]["string_title"]);
 }
