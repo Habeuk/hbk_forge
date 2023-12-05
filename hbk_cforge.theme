@@ -25,6 +25,33 @@ function hbk_cforge_preprocess_html(&$variables) {
 function hbk_cforge_preprocess_page(&$variables) {
 }
 
+
+
+/**
+ * Implements hook_form_alter().
+ */
+
+function hbk_cforge_form_search_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+    // dump($form);
+    //     if (isset($form['type']) && $form['type']['#value'] . '_node_settings' == $form_id) {
+    //         $upload_enabled_types = \Drupal::config('mymodule.settings')
+    //         ->get('upload_enabled_types');
+    //         $form['workflow']['upload_' . $form['type']['#value']] = [
+    //             '#type' => 'radios',
+    //             '#title' => t('Attachments'),
+    //             '#default_value' => in_array($form['type']['#value'], $upload_enabled_types) ? 1 : 0,
+    //             '#options' => [
+    //                 t('Disabled'),
+    //                 t('Enabled'),
+    //             ],
+    //         ];
+
+    //         // Add a custom submit handler to save the array of types back to the config file.
+    //         $form['actions']['submit']['#submit'][] = 'mymodule_upload_enabled_types_submit';
+    //     }
+}
+
+
 /**
  * Implements hook_preprocess_HOOK() for views_view.html.twig
  */
@@ -171,4 +198,61 @@ function hbk_cforge_preprocess_fieldset(&$variables) {
     $string_title = preg_replace('/[^A-Za-z0-9\-]/', '', (string) $markup);
     $variables["legend"]["string_title"] = $string_title . (string) rand(1000, 9999);
     // dump($variables["legend"]["string_title"]);
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for views_view.html.twig
+ */
+function hbk_cforge_preprocess_menu__main(&$variables) {
+    $site_name =   \Drupal::config('system.site')->get('name');
+    //set the variable site name for render
+    $variables["site_name"] = $site_name;
+
+
+    $config = \Drupal::config('system.theme.global');
+    $logo_path = $config->get('logo.path');
+
+    // dd($logo_config);
+
+    // Get the logo configuration for the active theme.
+    // $uri = \Drupal::service('file_system')->realpath($logo_config);
+    // dd($uri);
+    // // Get the logo file ID from the configuration.
+    // $logo_file_id = $logo_config[0]['target_id'] ?? null;
+
+    // Load the file entity using the file ID.
+    if ($logo_path) {
+        # code...
+        // $file = File::load($logo_file_id);
+
+        //Get the URL of the logo file.
+        // $logo_uri = $file->getFileUri();
+
+        $site_logo = [
+            '#theme' => 'image',
+            '#uri' => $logo_path,
+            '#alt' => 'Description de l\'image',
+        ];
+
+        //set the variables for  the site logo
+        $variables["site_logo"] = $site_logo;
+    }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for views_view.html.twig
+ */
+function hbk_cforge_preprocess_breadcrumb(&$variables) {
+    if ($variables['breadcrumb']) {
+        $request = \Drupal::request();
+        $route_match = \Drupal::routeMatch();
+        $page_title = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
+        if (!empty($page_title)) {
+            $variables['breadcrumb'][] = array(
+                'text' => $page_title
+            );
+            // Add cache context based on url.
+            $variables['#cache']['contexts'][] = 'url';
+        }
+    }
 }

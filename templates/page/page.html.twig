@@ -102,7 +102,7 @@
 		</div>
 	{% endif %}
 
-	<div class="page-body container pt-4">
+	<div class="page-body container pt-4 position-relative">
 		<div class="row {{content_flex_disposition}}">
 
 
@@ -117,7 +117,7 @@
 			</main>
 			<!-- END MAIN -->
 			{% if page.sidebar_right %}
-				<aside id="page-sidebar_right" class="col-sm-4" role="complementary">
+				<aside id="page-sidebar_right" class="col-sm-4 position-sticky" role="complementary">
 					{{ page.sidebar_right }}
 				</aside>
 			{% endif %}

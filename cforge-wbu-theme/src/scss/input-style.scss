@@ -111,3 +111,22 @@ textarea {
     margin-bottom: 20px;
     display: block;
 }
+
+.search-form {
+    margin-bottom: 30px;
+
+    &>div {
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+        align-items: end;
+
+        &>div {
+            margin-bottom: 0;
+        }
+
+        &>input[type="submit"] {
+            margin-right: 0;
+        }
+    }
+}

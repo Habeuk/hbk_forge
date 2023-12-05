@@ -143,14 +143,15 @@ h1.page-title {
         &>nav {
             margin-bottom: 30px;
 
-            h2 {
+            h3 {
                 border-bottom: 3px solid $wbu-color-primary;
                 padding-bottom: 10px;
             }
         }
     }
 
-    .menu--account {
+    .menu--account,
+    .cforge-menu {
         li {
             a {
 
@@ -159,11 +160,21 @@ h1.page-title {
                 width: 100%;
                 transition: all .15s ease;
                 font-weight: 600;
+                text-decoration: none;
+                color: $dark;
 
                 &:hover {
                     background-color: $wbu-color-primary;
-                    color: $light;
+                    color: $light !important;
                 }
+            }
+        }
+    }
+
+    .cforge-menu {
+        .menu-item {
+            a {
+                padding-block: 2px;
             }
         }
     }
