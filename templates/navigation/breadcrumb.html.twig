@@ -7,12 +7,20 @@
  * - breadcrumb: Breadcrumb trail items.
  */
 #}
+{% set li_classes = "" %}
+{% set list_classes = "d-flex align-items-end breadcrumb-list"%}
 {% if breadcrumb %}
 	<nav class="breadcrumb" role="navigation" aria-labelledby="system-breadcrumb">
 		<h2 id="system-breadcrumb" class="visually-hidden">{{ 'Breadcrumb'|t }}</h2>
-		<ol>
+		<ol class="{{list_classes}}">
 			{% for item in breadcrumb %}
-				<li>
+				{% if item.url != '/' %}
+					{% set local_li = li_classes ~ " translate-2" %}
+				{% else %}
+					{% set local_li = li_classes %}
+				{% endif %}
+
+				<li class="{{local_li}}">
 					{% if item.url %}
 						{% if item.url == '/' %}
 							<a href="{{ item.url }}">

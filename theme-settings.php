@@ -23,5 +23,6 @@ function hbk_cforge_form_system_theme_settings_alter(&$form, &$form_state) {
     '#max' => 18,
     '#default_value' => theme_get_setting('font_size'),
   ];
-
+  $configs = \Drupal::Config('hbk_cforge.settings')->get();
+  // dump($configs);
 }

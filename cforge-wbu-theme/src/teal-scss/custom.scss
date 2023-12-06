@@ -1,0 +1,14 @@
+.main-menu {
+    overflow-x: clip;
+    overflow-y: visible;
+
+    .menu-element {
+        label.mobile-item {
+
+            &::before,
+            &::after {
+                content: "";
+            }
+        }
+    }
+}

@@ -57,7 +57,7 @@
 #}
 {% if page.sidebar_right %}
 	{% set my_check = true %}
-	{% set content_flex_class = "col-sm-8" %}
+	{% set content_flex_class = "col-md-8" %}
 	{% set content_flex_disposition = "justify-content-between" %}
 {% else %}
 	{% set content_flex_disposition = "justify-content-around" %}
@@ -117,7 +117,7 @@
 			</main>
 			<!-- END MAIN -->
 			{% if page.sidebar_right %}
-				<aside id="page-sidebar_right" class="col-sm-4 position-sticky" role="complementary">
+				<aside id="page-sidebar_right" class="col-md-4 position-sticky" role="complementary">
 					{{ page.sidebar_right }}
 				</aside>
 			{% endif %}

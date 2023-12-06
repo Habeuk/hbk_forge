@@ -6,6 +6,7 @@ use Drupal\file\Entity\File;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\Core\Url;
 use Drupal\Core\Routing\UrlMatcher;
+use Drupal\migrate_drupal\Plugin\migrate\source\ContentEntity;
 use Google\Service\HangoutsChat\Resource\Dms;
 
 /**
@@ -31,29 +32,18 @@ function hbk_cforge_preprocess_page(&$variables) {
  * Implements hook_form_alter().
  */
 
-function hbk_cforge_form_search_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
-    // dump($form);
-    //     if (isset($form['type']) && $form['type']['#value'] . '_node_settings' == $form_id) {
-    //         $upload_enabled_types = \Drupal::config('mymodule.settings')
-    //         ->get('upload_enabled_types');
-    //         $form['workflow']['upload_' . $form['type']['#value']] = [
-    //             '#type' => 'radios',
-    //             '#title' => t('Attachments'),
-    //             '#default_value' => in_array($form['type']['#value'], $upload_enabled_types) ? 1 : 0,
-    //             '#options' => [
-    //                 t('Disabled'),
-    //                 t('Enabled'),
-    //             ],
-    //         ];
-
-    //         // Add a custom submit handler to save the array of types back to the config file.
-    //         $form['actions']['submit']['#submit'][] = 'mymodule_upload_enabled_types_submit';
-    //     }
+function hbk_cforge_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+    if (strpos($form["#action"], "search") !== FALSE) {
+        $form["#attributes"]["class"][] =  "my-search-form";
+    }
 }
 
+/**
+ * Implements hook_form_alter().
+ */
 
 /**
- * Implements hook_preprocess_HOOK() for views_view.html.twig
+ * Implements hook_preprocess_HOOK() for views_view_style.html.twig
  */
 function hbk_cforge_preprocess_views_view_unformatted(&$variables) {
     $route_match = \Drupal::service('current_route_match');
@@ -69,6 +59,17 @@ function hbk_cforge_preprocess_views_view_unformatted(&$variables) {
     if ($current_url->getPathInfo()) {
         $variables["is_home"] = TRUE;
     };
+}
+
+
+/**
+ * Implements hook_preprocess_HOOK() for views_view_style.html.twig
+ */
+function hbk_cforge_preprocess_views_view_table(&$variables) {
+    $variables["cell_header"] = [];
+    foreach ($variables["header"] as $key => $header) {
+        $variables["cell_header"][] = $header["content"];
+    }
 }
 
 /**
@@ -109,19 +110,6 @@ function hbk_cforge_preprocess_node(&$variables) {
     // dump([$imageStyle, $file, $file->getFileUri()]);
 }
 
-/**
- * Implements hook_theme_suggestions_menu_alter().
- */
-function hbk_cforge_theme_suggestions_menu_alter(array &$suggestions, array $variables) {
-    // // Récupérer les informations de suggestion de menu existantes
-    // // Ajouter une suggestion de menu personnalis￩e avec les informations reçues
-    // if ($variables["menu_name"] === "main") {
-    //     # code...
-    //     $CustomSuggestions = 'my__menu';
-    //     $suggestions[] = $CustomSuggestions;
-    //     dump($suggestions);
-    // }
-}
 
 /**
  * Implements hook_theme() to define the theme hook for the slider_block.
@@ -161,17 +149,6 @@ function hbk_cforge_preprocess_block($variables) {
  * Implements hook_views_pre_render().
  */
 function hbk_cforge_views_pre_render(\Drupal\views\ViewExecutable $view) {
-    // Vérifiez si la vue est la vue souhaitée.
-    // Obtenez le contenu des régions.
-
-    // dump(\Drupal::service('renderer'));
-    // dump($view);    
-    // $header_content = \Drupal::service('renderer')->renderRoot($view->header['area']);
-    // $footer_content = \Drupal::service('renderer')->renderRoot($view->footer['area']);
-
-    // // Faites quelque chose avec le contenu des régions, par exemple l'ajouter aux résultats de la vue.
-    // $view->attachment_before = $header_content;
-    // $view->attachment_after = $footer_content;
 }
 
 /**
@@ -188,7 +165,7 @@ function hbk_cforge_preprocess_comment__comment(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for views_view.html.twig
+ * Implements hook_preprocess_HOOK() for fieldset
  */
 function hbk_cforge_preprocess_fieldset(&$variables) {
     /**
@@ -201,7 +178,7 @@ function hbk_cforge_preprocess_fieldset(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for views_view.html.twig
+ * Implements hook_preprocess_HOOK() menu__main
  */
 function hbk_cforge_preprocess_menu__main(&$variables) {
     $site_name =   \Drupal::config('system.site')->get('name');
@@ -212,21 +189,10 @@ function hbk_cforge_preprocess_menu__main(&$variables) {
     $config = \Drupal::config('system.theme.global');
     $logo_path = $config->get('logo.path');
 
-    // dd($logo_config);
-
-    // Get the logo configuration for the active theme.
-    // $uri = \Drupal::service('file_system')->realpath($logo_config);
-    // dd($uri);
-    // // Get the logo file ID from the configuration.
-    // $logo_file_id = $logo_config[0]['target_id'] ?? null;
 
     // Load the file entity using the file ID.
     if ($logo_path) {
         # code...
-        // $file = File::load($logo_file_id);
-
-        //Get the URL of the logo file.
-        // $logo_uri = $file->getFileUri();
 
         $site_logo = [
             '#theme' => 'image',
