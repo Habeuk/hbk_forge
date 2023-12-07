@@ -4,6 +4,7 @@
 @use "./input-style.scss";
 @use "./node--full.scss";
 
+
 .cforge-bg-light {
     background-color: $light !important;
 
@@ -54,7 +55,9 @@
 }
 
 .page-front-body {
-    padding-block: 100px 70px;
+    @include media-min(SM) {
+        padding-block: 50px 70px;
+    }
 }
 
 .block-social-link {
@@ -242,6 +245,10 @@ article.comment {
 
 
 .cforge-table {
+    thead {
+        background-color: $wbu-color-primary;
+        color: $light;
+    }
 
     tr {
 
@@ -272,4 +279,9 @@ article.comment {
             }
         }
     }
+}
+
+.region-sidebar-right {
+    background-color: $gray-500;
+    padding: 2rem 1.5rem;
 }

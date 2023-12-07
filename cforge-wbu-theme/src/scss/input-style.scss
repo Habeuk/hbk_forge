@@ -172,14 +172,27 @@ textarea {
 }
 
 .form--inline {
-    display: flex;
+
+    @include media-min(SM) {
+        margin-bottom: 30px;
+        display: flex;
+
+        // justify-content: center;
+        &>* {
+            margin: 0;
+        }
+    }
+
+
     width: fit-content;
     margin-inline: auto;
     align-items: end;
+    flex-wrap: wrap;
     gap: 20px;
 
     .form-item {
         display: flex;
         flex-direction: column;
+        min-width: 200px;
     }
 }
