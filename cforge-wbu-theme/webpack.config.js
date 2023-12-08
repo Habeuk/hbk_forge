@@ -14,7 +14,7 @@ const plugins = [];
 // enable in production only
 plugins.push(
   new MiniCssExtractPlugin({
-    filename: "./css/dark/[name].css",
+    filename: "./css/purple/[name].css",
     chunkFilename: "[id].css",
   })
 );
@@ -33,7 +33,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "../"),
-    filename: "./js/dark/[name].js",
+    filename: "./js/teal/[name].js",
   },
   devtool: devMode ? "inline-source-map" : false,
   module: {
