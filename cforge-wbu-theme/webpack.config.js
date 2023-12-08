@@ -15,12 +15,13 @@ const plugins = [];
  * Permet definir un dossier pour regrouper les couleurs.
  * example  const color_dir= "purple/";
  */
-// const color_dir= "purple/";
 // empty for default file.
-const color_dir= "";
+// const color_dir = "teal/";
+// const color_dir = "passion/";
+// const color_dir = "purple/";
 plugins.push(
   new MiniCssExtractPlugin({
-    filename: "./css/"+color_dir+"[name].css",
+    filename: "./css/" + color_dir + "[name].css",
     chunkFilename: "[id].css",
   })
 );
@@ -36,7 +37,7 @@ module.exports = {
     "breadcrumb-style": "./src/js/breadcrumb-style.js",
     "teaser-style": "./src/js/teaser-style.js",
     "text-image-style": "./src/js/text-image-style.js",
-    "components": "./src/js/components.js",
+    // "components": "./src/js/components.js",
   },
   output: {
     path: path.resolve(__dirname, "../"),

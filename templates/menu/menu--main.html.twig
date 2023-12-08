@@ -4,50 +4,52 @@
 {% endif %}
 
 {{attach_library(lib_name)}}
-<div class="menu-wrapper d-sm-flex justify-content-sm-between align-items-start py-4">
-	<div class="site-information d-flex flex-column justify-content-between">
-		{% if site_logo %}
-			<div class="logo">
-				<a href="{{ front_page }}">{{ site_logo }}</a>
-			</div>
-		{% endif %}
-		<a href="{{front_page}}" class="site-name">{{site_name}}</a>
-		{% if site_slogan %}
-			<span>{{site_slogan}}</span>
-		{% endif %}
+<div class="main-menu">
+	<div class="menu-wrapper d-sm-flex justify-content-sm-between align-items-start py-4">
+		<div class="site-information d-flex flex-column justify-content-between">
+			{% if site_logo %}
+				<div class="logo">
+					<a href="{{ front_page }}">{{ site_logo }}</a>
+				</div>
+			{% endif %}
+			<a href="{{front_page}}" class="site-name">{{site_name}}</a>
+			{% if site_slogan %}
+				<span>{{site_slogan}}</span>
+			{% endif %}
 
+		</div>
+		<div class="">
+			<input type="checkbox" name="slider" id="menu-btn"/>
+
+			<ul class="nav-links">
+				<label for="menu-btn" class="menu-hamburger close-btn">
+					<i class="fas fa-times"></i>
+				</label>
+				{% for item in items %}
+					<li class="menu-element">
+						{% if item.below %}
+							<a class="desktop-item font-weight-bold">{{ item.title }}</a>
+
+							<input type="checkbox" class="showDrop" id="showDrop{{ loop.index }}"/>
+							<label for="showDrop{{ loop.index }}" class="font-weight-bold mobile-item">{{ item.title }}</label>
+
+							<ul class="drop-menu">
+								{% for subItem in item.below %}
+									<li>
+										<a href="{{ subItem.url }}">{{ subItem.title }}</a>
+									</li>
+								{% endfor %}
+							</ul>
+						{% else %}
+							<a href="{{ item.url }}" class="font-weight-bold">{{ item.title }}</a>
+
+						{% endif %}
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<label for="menu-btn" class="menu-hamburger menu-btn position-relative">
+			<span class="position-absolute"></span>
+		</label>
 	</div>
-	<div class="">
-		<input type="checkbox" name="slider" id="menu-btn"/>
-
-		<ul class="nav-links">
-			<label for="menu-btn" class="menu-hamburger close-btn">
-				<i class="fas fa-times"></i>
-			</label>
-			{% for item in items %}
-				<li class="menu-element">
-					{% if item.below %}
-						<a class="desktop-item font-weight-bold">{{ item.title }}</a>
-
-						<input type="checkbox" class="showDrop" id="showDrop{{ loop.index }}"/>
-						<label for="showDrop{{ loop.index }}" class="font-weight-bold mobile-item">{{ item.title }}</label>
-
-						<ul class="drop-menu">
-							{% for subItem in item.below %}
-								<li>
-									<a href="{{ subItem.url }}">{{ subItem.title }}</a>
-								</li>
-							{% endfor %}
-						</ul>
-					{% else %}
-						<a href="{{ item.url }}" class="font-weight-bold">{{ item.title }}</a>
-
-					{% endif %}
-				</li>
-			{% endfor %}
-		</ul>
-	</div>
-	<label for="menu-btn" class="menu-hamburger menu-btn position-relative">
-		<span class="position-absolute"></span>
-	</label>
 </div>
