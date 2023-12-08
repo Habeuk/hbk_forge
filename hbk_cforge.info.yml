@@ -10,11 +10,9 @@ libraries:
   - hbk_cforge/global-style
   - hbk_cforge/general-style
 regions:
+  top_header: "Top Header"
   header: "Header"
-  primary_menu: "Primary menu"
-  breadcrumb: "Breadcrumb"
   slider: "Slider"
-  top: "Top Region"
   content: "Content"
   sidebar_right: "Sidebar first"
   bottom: "before footer"

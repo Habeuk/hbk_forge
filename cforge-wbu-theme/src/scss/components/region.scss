@@ -1,0 +1,6 @@
+@use "../drush_site_install_variables.scss" as *;
+.region {
+	> .block{
+		margin-bottom: $wbu-margin*1.5;
+	}	
+}

@@ -68,60 +68,41 @@
 
 
 {% if page.sidebar_right %}
-	{% set my_check = true %}
 	{% set content_flex_class = "col-md-8" %}
-	{% set content_flex_disposition = "justify-content-between" %}
+	{% set content_flex_disposition = "row justify-content-between" %}
 {% else %}
 	{% set content_flex_disposition = "justify-content-around" %}
 	{% set content_flex_class = "full-content no-side-region" %}
 {% endif %}
 
 <div id="wrapper">
-	<header role="banner">
-		{{ page.header }}
-	</header>
-
-	{% if page.primary_menu %}
-		<nav class="main-menu">
-			<div class="primary-menu">
-				{{page.primary_menu}}
-			</div>
-		</nav>
+	{% if page.top_header %}
+    	<section>
+    		{{ page.top_header }}
+    	</section>
 	{% endif %}
-
-	{% if page.primary_menu %}
-		<div class="secondary-menu">
-			{{page.secondary_menu}}
-		</div>
+	{% if page.header %}
+    	<header role="banner">
+    		{{ page.header }}
+    	</header>
 	{% endif %}
-
 	{% if page.breadcrumb %}
 		<div class="page-breadcrumb">
 			{{page.breadcrumb}}
 		</div>
 	{% endif %}
-
-
 	{% if page.slider %}
 		<div id="page-slider" class="mb-5">
 			{{ page.slider }}
 		</div>
 	{% endif %}
-
-	{% if page.top %}
-		<div id="page-top-region">
-			{{ page.top }}
-		</div>
-	{% endif %}
-
 	<div class="page-body container pt-4 position-relative mb-5">
-		<div class="row {{content_flex_disposition}}">
+		<div class=" {{content_flex_disposition}}">
 
 
 			<main role="main" id="main" class="{{content_flex_class}}">
 
-				<div
-					id="main-inner">
+				<div id="main-inner">
 					<!--page content-->
 					{{ page.content }}
 					<!--/page content-->

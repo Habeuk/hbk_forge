@@ -11,10 +11,16 @@ const devMode = process.env.NODE_ENV !== "production";
 
 const plugins = [];
 
-// enable in production only
+/**
+ * Permet definir un dossier pour regrouper les couleurs.
+ * example  const color_dir= "purple/";
+ */
+// const color_dir= "purple/";
+// empty for default file.
+const color_dir= "";
 plugins.push(
   new MiniCssExtractPlugin({
-    filename: "./css/purple/[name].css",
+    filename: "./css/"+color_dir+"[name].css",
     chunkFilename: "[id].css",
   })
 );
@@ -30,6 +36,7 @@ module.exports = {
     "breadcrumb-style": "./src/js/breadcrumb-style.js",
     "teaser-style": "./src/js/teaser-style.js",
     "text-image-style": "./src/js/text-image-style.js",
+    "components": "./src/js/components.js",
   },
   output: {
     path: path.resolve(__dirname, "../"),

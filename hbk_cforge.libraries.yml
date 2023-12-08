@@ -12,6 +12,7 @@ general-style:
   css:
     theme:
       css/general-style.css: {}
+      css/components.css: {}
 
 vendor-style:
   css:

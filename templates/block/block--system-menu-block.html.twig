@@ -40,6 +40,7 @@
     'menu--' ~ derivative_plugin_id|clean_class,
   ]
 %}
+
 {% set heading_id = attributes.id ~ '-menu'|clean_id %}
 <nav
 	role="navigation" aria-labelledby="{{ heading_id }}" {{ attributes.addClass(classes)|without('role', 'aria-labelledby') }}>
@@ -49,7 +50,6 @@
 	{% endif %}
 	{{ title_prefix }}
 	<h3{{title_attributes.setAttribute('id',heading_id).addClass(['font-weight-bold'])}}>{{ configuration.label }}</h3>
-
 	{{ title_suffix }}
 
 	{# Menu. #}
