@@ -3,13 +3,11 @@
 
 .breadcrumb {
     margin-bottom: 0 !important;
-    background-color: $gray-900 !important;
 
     .breadcrumb-list {
         gap: 5px;
 
         li {
-            color: $gray-500;
             position: relative;
             padding-left: 25px;
             overflow: hidden;
@@ -46,11 +44,6 @@
 
             a {
                 text-decoration: none;
-                color: $gray-300;
-
-                &:hover {
-                    color: $gray-500;
-                }
             }
         }
 

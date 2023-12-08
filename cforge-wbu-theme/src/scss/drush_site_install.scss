@@ -245,11 +245,6 @@ article.comment {
 
 
 .cforge-table {
-    thead {
-        background-color: $wbu-color-primary;
-        color: $light;
-    }
-
     tr {
 
         td,
@@ -279,9 +274,4 @@ article.comment {
             }
         }
     }
-}
-
-.region-sidebar-right {
-    background-color: $gray-500;
-    padding: 2rem 1.5rem;
 }
