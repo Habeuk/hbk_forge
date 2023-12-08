@@ -55,8 +55,27 @@
  * @ingroup themeable
  */
 #}
-{% set content_flex_class = "col-md-12" %}
-{% set content_flex_disposition = "justify-content-around" %}
+
+{% set global_lib = "hbk_cforge/global-style" %}
+{% set vendor_lib = "hbk_cforge/vendor-style" %}
+
+{% if cforge_lib_suffix.global_lib %}
+	{% set global_lib = global_lib ~ cforge_lib_suffix %}
+	{% set vendor_lib = vendor_lib ~ cforge_lib_suffix %}
+{% endif %}
+
+{{attach_library(global_lib)}}
+{{attach_library(vendor_lib)}}
+
+
+{% if page.sidebar_right %}
+	{% set my_check = true %}
+	{% set content_flex_class = "col-md-8" %}
+	{% set content_flex_disposition = "justify-content-between" %}
+{% else %}
+	{% set content_flex_disposition = "justify-content-around" %}
+	{% set content_flex_class = "full-content" %}
+{% endif %}
 
 <div id="wrapper">
 	<header role="banner">
@@ -85,7 +104,7 @@
 
 
 	{% if page.slider %}
-		<div id="page-slider">
+		<div id="page-slider" class="mb-5">
 			{{ page.slider }}
 		</div>
 	{% endif %}
@@ -109,6 +128,12 @@
 					<!--/page content-->
 				</div>
 			</main>
+			<!-- END MAIN -->
+			{% if page.sidebar_right %}
+				<aside id="page-sidebar_right" class="col-md-4 position-sticky" role="complementary">
+					{{ page.sidebar_right }}
+				</aside>
+			{% endif %}
 		</div>
 	</div>
 	{% if page.bottom %}
@@ -125,7 +150,7 @@
 					</div>
 				{% endif %}
 				{% if page.footer %}
-					<div id="footer-content" class="cforge-footer-content text-center">
+					<div id="footer-content" class="cforge-footer-content text-left text-sm-center">
 						{{ page.footer }}
 					</div>
 				{% endif %}

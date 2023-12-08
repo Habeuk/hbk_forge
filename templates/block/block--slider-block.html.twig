@@ -1,4 +1,9 @@
-{{attach_library("hbk_cforge/slider-style")}}
+{% set lib_name = "hbk_cforge/slider-style" %}
+{% if cforge_lib_suffix %}
+	{% set lib_name = lib_name ~ cforge_lib_suffix %}
+{% endif %}
+
+{{attach_library(lib_name)}}
 <div class="cforge-slider-container">
 	<div
 		class="swiper">

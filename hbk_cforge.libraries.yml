@@ -8,6 +8,11 @@ global-style:
   dependencies:
     - core/once
 
+general-style:
+  css:
+    theme:
+      css/general-style.css: {}
+
 vendor-style:
   css:
     theme:

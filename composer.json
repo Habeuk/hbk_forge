@@ -1,7 +1,7 @@
 {
   "name": "habeuk/hbk_cforge",
   "description": "theme pour cforge",
-  "type": "drupal-custom-theme",
+  "type": "drupal-theme",
   "license": "MIT",
   "authors": [
     {

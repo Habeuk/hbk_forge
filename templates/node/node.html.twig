@@ -67,7 +67,12 @@
  *
  */
 #}
-{{attach_library("hbk_cforge/teaser-style")}}
+{% set lib_name = "hbk_cforge/teaser-style" %}
+{% if cforge_lib_suffix %}
+	{% set lib_name = lib_name ~ cforge_lib_suffix %}
+{% endif %}
+{{attach_library(lib_name)}}
+
 
 <div class="metro-service">
 	<div class="metro-service__img">
@@ -83,7 +88,7 @@
 				</h2>
 			{% endif %}
 			<div{{content_attributes.addClass('node__content')}}>
-				<a href="{{url}}">{{ content }}</a>
+				<a href="{{url}}">{{ content.body }}</a>
 
 			</div>
 		</div>

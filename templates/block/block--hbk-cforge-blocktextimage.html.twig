@@ -26,7 +26,14 @@
  * @see template_preprocess_block()
  */
 #}
-{{attach_library("hbk_cforge/text-image-style")}}
+
+
+{% set lib_name = "hbk_cforge/text-image-style" %}
+{% if cforge_lib_suffix %}
+	{% set lib_name = lib_name ~ cforge_lib_suffix %}
+{% endif %}
+
+{{attach_library(lib_name)}}
 {%
   set classes = [
     content.bg_style,

@@ -28,8 +28,7 @@
     'form-wrapper',
   ]
 %}
-{# {% set field_set_id = "value" %} #}
-{% set field_set_id = legend.string_title|title|replace({' ': ''}) %}
+{% set toggle_class = "" %}
 <fieldset{{attributes.addClass(classes)}}>
 	{%
     set legend_span_classes = [
@@ -41,15 +40,20 @@
 
 	{#  Always wrap fieldset legends in a <span> for CSS positioning. #}
 	<legend{{legend.attributes}}>
-		<button class="btn btn-outline-primary w-100 text-left" type="button" data-toggle="collapse" data-target="#{{field_set_id}}" aria-expanded="false" aria-controls="{{field_set_id}}">
+		{% if legend.title %}
+			{% set toggle_class = "collapse" %}
 
-			<span{{legend_span.attributes.addClass(legend_span_classes)}}>
-				{{ legend.title }}
-			</span>
-		</button>
+			<button class="btn btn-outline-primary w-100 text-left" type="button" data-toggle="collapse" data-target="#{{field_set_id}}" aria-expanded="false" aria-controls="{{field_set_id}}">
+
+				<span{{legend_span.attributes.addClass(legend_span_classes)}}>
+					{{ legend.title }}
+				</span>
+			</button>
+		{% endif %}
 
 	</legend>
-	<div class="collapse border px-5" id="{{field_set_id}}">
+	<div class="{{toggle_class}} border px-5" id="{{field_set_id}}">
+
 		<div class="fieldset-wrapper py-3">
 			{% if errors %}
 				<div class="form-item--error-message">

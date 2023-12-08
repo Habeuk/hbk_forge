@@ -17,7 +17,6 @@
 #}
 
 {% set toggle_class = "" %}
-{% set field_set_id = title|title|replace({' ': ''}) %}
 <div{{attributes}}>
 	{%- if title -%}
 		{%
@@ -37,7 +36,8 @@
 		</legend>
 
 	{%- endif -%}
-	<div class="collapse border px-5" id="{{field_set_id}}">
+	<div class="{{toggle_class}} border px-5" id="{{field_set_id}}">
+
 		<div class="details-wrapper">
 			{% if errors %}
 				<div class="form-item--error-message">

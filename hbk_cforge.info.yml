@@ -1,13 +1,14 @@
 name: HBK cforge
 type: theme
-base theme: starterkit_theme
-description: A flexible theme with a responsive, mobile-first layout.
+base theme: stable9
+description: A flexible theme with a responsive layout.
 package: Custom
-core_version_requirement: ^10
+core_version_requirement: ^9 | ^10
 # Ajout des librairies
 libraries:
   - hbk_cforge/vendor-style
   - hbk_cforge/global-style
+  - hbk_cforge/general-style
 regions:
   header: "Header"
   primary_menu: "Primary menu"

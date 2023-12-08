@@ -26,7 +26,6 @@
  * @see template_preprocess_block()
  */
 #}
-{{attach_library("hbk_cforge/breadcrumb-style")}}
 {%
   set classes = [
     'block',
@@ -39,7 +38,6 @@
 	{{ title_prefix }}
 	{% if label %}
 		<h2{{title_attributes.addclass(['font-weight-bold'])}}>{{ label }}</h2>
-
 	{% endif %}
 	{{ title_suffix }}
 	{% block content %}
