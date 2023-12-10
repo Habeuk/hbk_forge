@@ -2,7 +2,6 @@
 {% if cforge_lib_suffix %}
 	{% set lib_name = lib_name ~ cforge_lib_suffix %}
 {% endif %}
-
 {{attach_library(lib_name)}}
 <div class="cforge-slider-container">
 	<div
@@ -30,7 +29,7 @@
 												{{slide.title}}
 											</h3>
 											<div class="mc-description">
-												{{slide.description}}
+												{{slide.description.value | raw}}
 											</div>
 											{% if slide.link and slide.link_label %}
 												<a href="{{slide.link}}" class="btn btn-wbu-background btn-outline-wbu-background text-light font-weight-bold px-5 ml-0 mt-5">{{slide.link_label}}</a>

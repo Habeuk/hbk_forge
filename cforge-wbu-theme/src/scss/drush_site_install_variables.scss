@@ -4,10 +4,10 @@
      * egalement surcharger.
      */
 //color
-$wbu-color-primary: #AA0A33;
+$wbu-color-primary: teal;
 $wbu-color-secondary: #0e0e0e;
-$wbu-color-thirdly: rgb(184, 184, 36) !default;
-$wbu-background: #0F103E !default;
+$wbu-color-thirdly: #003a3a !default;
+$wbu-background: #0f103e !default;
 $wbu-link-color: $wbu-color-primary;
 $wbu-bootstrap-primary: $wbu-color-primary;
 // Police
@@ -29,7 +29,7 @@ $wbu_titre_biggest: 6.4rem;
 /**
      * On injecte toutes les variables directement dans ce fichier.
      */
-@import "@stephane888/wbu-atomique/scss/wbu-ressources-clean.scss";
+@import '@stephane888/wbu-atomique/scss/wbu-ressources-clean.scss';
 
 // Les variables qui ont besoins des informations provenant du core de
 // wbu-atomique.

@@ -1,9 +1,8 @@
-@use "./drush_site_install_variables.scss" as *;
-@use "@stephane888/wbu-atomique/scss/bootstrap-all.scss";
-@use "./custom.scss";
-@use "./input-style.scss";
-@use "./node--full.scss";
-
+@use './drush_site_install_variables.scss' as *;
+@use '@stephane888/wbu-atomique/scss/bootstrap-all.scss';
+@use './custom.scss';
+@use './input-style.scss';
+@use './node--full.scss';
 
 .cforge-bg-light {
 	background-color: $light !important;
@@ -42,7 +41,7 @@
 	background-color: $light;
 
 	&::before {
-		content: "";
+		content: '';
 		position: absolute;
 		width: 50px;
 		aspect-ratio: 1;
@@ -69,7 +68,7 @@
 			padding: 5px;
 			color: $gray-600;
 			border-radius: 50%;
-			transition: all .3s ease;
+			transition: all 0.3s ease;
 
 			svg {
 				width: 32px;
@@ -84,9 +83,7 @@
 	}
 }
 
-
 .page-footer {
-
 	.cforge-footer-content {
 		a {
 			color: $wbu-color-secondary;
@@ -103,7 +100,6 @@
 }
 
 nav {
-
 	ul.cforge-menu {
 		margin: 0;
 		margin-left: 0;
@@ -140,10 +136,9 @@ h1.page-title {
 }
 
 #page-sidebar_right {
-	&>div {
-
-		&>div,
-		&>nav {
+	& > div {
+		& > div,
+		& > nav {
 			margin-bottom: 30px;
 
 			h3 {
@@ -157,11 +152,10 @@ h1.page-title {
 	.cforge-menu {
 		li {
 			a {
-
 				padding: 10px 20px;
 				display: inline-block;
 				width: 100%;
-				transition: all .15s ease;
+				transition: all 0.15s ease;
 				font-weight: 600;
 				text-decoration: none;
 				color: $dark;
@@ -193,7 +187,7 @@ article.comment {
 		border: none;
 
 		&::before {
-			content: "";
+			content: '';
 			position: absolute;
 			top: 0;
 			bottom: 0;
@@ -243,10 +237,8 @@ article.comment {
 	flex-direction: wrap;
 }
 
-
 .cforge-table {
 	tr {
-
 		td,
 		th {
 			padding-block: 1.8rem;
@@ -272,5 +264,14 @@ article.comment {
 				}
 			}
 		}
+	}
+}
+.footer-placeholder {
+	a {
+		color: white;
+	}
+	background-color: red;
+	.end-footer {
+		background-color: $wbu-color-thirdly;
 	}
 }

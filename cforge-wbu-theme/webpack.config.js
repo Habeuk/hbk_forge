@@ -19,7 +19,7 @@ const plugins = [];
 // const color_dir = "teal/";
 // const color_dir = "passion/";
 // const color_dir = "purple/";
-color_dir = "";
+color_dir = "teal/";
 plugins.push(
   new MiniCssExtractPlugin({
     filename: "./css/" + color_dir + "[name].css",
@@ -38,7 +38,7 @@ module.exports = {
     "breadcrumb-style": "./src/js/breadcrumb-style.js",
     "teaser-style": "./src/js/teaser-style.js",
     "text-image-style": "./src/js/text-image-style.js",
-    "components": "./src/js/components.js",
+    // "components": "./src/js/components.js",
   },
   output: {
     path: path.resolve(__dirname, "../"),

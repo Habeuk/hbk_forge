@@ -76,6 +76,22 @@ function hbk_cforge_preprocess_region(&$variables) {
  * Implements hook_preprocess_HOOK() for page.html.twig.
  */
 function hbk_cforge_preprocess_page(&$variables) {
+    $config = \Drupal::config('system.theme.global');
+    $logo_path = $config->get('logo.path');
+
+    // Load the file entity using the file ID.
+    if ($logo_path) {
+        # code...
+
+        $site_logo = [
+            '#theme' => 'image',
+            '#uri' => $logo_path,
+            '#alt' => 'Description de l\'image'
+        ];
+
+        // set the variables for the site logo
+        $variables["site_logo"] = $site_logo;
+    }
 }
 
 /**
