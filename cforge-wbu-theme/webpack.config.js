@@ -19,7 +19,7 @@ const plugins = [];
 // const color_dir = "teal/";
 // const color_dir = "passion/";
 // const color_dir = "purple/";
-color_dir = "teal/";
+color_dir = "";
 plugins.push(
   new MiniCssExtractPlugin({
     filename: "./css/" + color_dir + "[name].css",
@@ -31,18 +31,18 @@ module.exports = {
   plugins,
   mode: env || "development", // On définit le mode en fonction de la valeur de NODE_ENV
   entry: {
-    "global-style": "./src/js/global-style.js",
-    "vendor-style": "./src/js/vendor-style.js",
-    "menu-style": "./src/js/menu-style.js",
-    "slider-style": "./src/js/slider-style.js",
-    "breadcrumb-style": "./src/js/breadcrumb-style.js",
-    "teaser-style": "./src/js/teaser-style.js",
-    "text-image-style": "./src/js/text-image-style.js",
-    // "components": "./src/js/components.js",
+    // "global-style": "./src/js/global-style.js",
+    // "vendor-style": "./src/js/vendor-style.js",
+    // "menu-style": "./src/js/menu-style.js",
+    // "slider-style": "./src/js/slider-style.js",
+    // "breadcrumb-style": "./src/js/breadcrumb-style.js",
+    // "teaser-style": "./src/js/teaser-style.js",
+    // "text-image-style": "./src/js/text-image-style.js",
+    "components": "./src/js/components.js",
   },
   output: {
     path: path.resolve(__dirname, "../"),
-    filename: "./js/teal/[name].js",
+    filename: "./js" + color_dir + "/[name].js",
   },
   devtool: devMode ? "inline-source-map" : false,
   module: {

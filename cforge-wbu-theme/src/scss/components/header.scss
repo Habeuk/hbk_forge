@@ -1,0 +1,14 @@
+@use "../drush_site_install_variables.scss" as *;
+
+.main-menu {
+    .menu-wrapper {
+        .site-information {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
+
+.site-information {
+    display: none;
+}
