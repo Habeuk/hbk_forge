@@ -1,0 +1,25 @@
+uuid: 1535ada7-8677-4be8-ad93-c30f703ee8e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - hbk_cforge
+id: mainnavigation_2
+theme: hbk_cforge
+region: footer_end
+weight: -12
+provider: null
+plugin: "system_menu_block:main"
+settings:
+  id: "system_menu_block:main"
+  label: "Main navigation"
+  label_display: "0"
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {}

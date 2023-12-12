@@ -16,5 +16,5 @@ regions:
   content: "Content"
   sidebar_right: "Sidebar first"
   bottom: "before footer"
-  footer_col: "Footer en colonnes"
-  footer: "Footer"
+  footer: "Footer left"
+  footer_end: "Footer bottom"

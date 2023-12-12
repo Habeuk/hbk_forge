@@ -1,0 +1,35 @@
+uuid: 7bf8dad9-ad65-4b30-ba83-d489bc9d6317
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.account
+  module:
+    - system
+    - user
+  theme:
+    - hbk_cforge
+_core:
+  default_config_hash: 92FvPcZbDDMbHxsqzxtAG88Pxf0vcZWMlvxQTmEtyrc
+id: hbk_cforge_useraccountmenu
+theme: hbk_cforge
+region: sidebar_right
+weight: -9
+provider: sky_seldulac
+plugin: "system_menu_block:account"
+settings:
+  id: "system_menu_block:account"
+  label: "User account menu"
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: "@user.current_user_context:current_user"
+    roles:
+      authenticated: authenticated

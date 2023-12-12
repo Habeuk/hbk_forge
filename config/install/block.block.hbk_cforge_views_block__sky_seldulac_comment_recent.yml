@@ -1,0 +1,26 @@
+uuid: 469400e8-61ea-4a98-93a1-e308ec8156d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.comments_recent
+  module:
+    - views
+  theme:
+    - hbk_cforge
+_core:
+  default_config_hash: aTpUod50Ni6sGQDfjhleiuDG6EZ4ObGAnMbzStuZAFE
+id: hbk_cforge_views_block__sky_seldulac_comment_recent
+theme: hbk_cforge
+region: sidebar_right
+weight: -6
+provider: cforge
+plugin: "views_block:comments_recent-block_1"
+settings:
+  id: "views_block:comments_recent-block_1"
+  label: ""
+  label_display: visible
+  provider: views
+  views_label: ""
+  items_per_page: none
+visibility: {}

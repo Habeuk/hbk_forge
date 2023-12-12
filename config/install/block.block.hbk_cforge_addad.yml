@@ -1,0 +1,23 @@
+uuid: 9ac01fd2-48b2-4b61-afc7-172961ff005a
+langcode: en
+status: true
+dependencies:
+  module:
+    - smallads
+  theme:
+    - hbk_cforge
+_core:
+  default_config_hash: AhoX4TiuAn1DeJAyfICEz7OZtUTwYAEL7bei-ysnvgA
+id: hbk_cforge_addad
+theme: hbk_cforge
+region: sidebar_right
+weight: -10
+provider: smallads
+plugin: add_ad_block
+settings:
+  id: add_ad_block
+  label: "Place a listing"
+  label_display: visible
+  provider: smallads
+  adtype: ""
+visibility: {}

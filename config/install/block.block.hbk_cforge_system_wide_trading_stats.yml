@@ -1,0 +1,23 @@
+uuid: 7329072d-315c-46ff-81ac-f794a979e765
+langcode: en
+status: true
+dependencies:
+  module:
+    - mcapi
+  theme:
+    - hbk_cforge
+_core:
+  default_config_hash: ft5o85woUIML1evkCUK8mjIXQwx8NLiM1trn8qkKWFw
+id: hbk_cforge_system_wide_trading_stats
+theme: hbk_cforge
+region: sidebar_right
+weight: 3
+provider: null
+plugin: mcapi_system_stats
+settings:
+  id: mcapi_system_stats
+  label: "System-wide trading stats"
+  label_display: visible
+  provider: mcapi
+  period: "1 year"
+visibility: {}

@@ -1,2 +1,26 @@
-# Default settings of HBK cforge theme.
-font_size: 16
+features:
+  node_user_picture: 0
+  comment_user_picture: 1
+  comment_user_verification: 0
+  favicon: 1
+logo:
+  use_default: 0
+  path: profiles/cforge/assets/logo.png
+favicon:
+  use_default: 1
+hbk_cforge:
+  current_theme: teal
+  old_theme: teal
+social:
+  title: "SUIVEZ-NOUS SUR LES MEDIAS SOCIAUX."
+  facebook: "https://wwwfacebook.com/"
+  x: "https://www.twitter.com"
+  youtube: ""
+  linkedin: ""
+  github: ""
+  instagram: ""
+  snapchat: ""
+  pinterest: ""
+  bg_style: cforge-bg-gray-300
+  show_bottom_svg: 1
+  show_social: 1

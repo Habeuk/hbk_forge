@@ -4,9 +4,9 @@
 {% endif %}
 
 {{attach_library(lib_name)}}
-<div class="main-menu">
+<div>
 	<div class="menu-wrapper d-sm-flex justify-content-sm-between align-items-start py-4">
-		<div class="site-information d-flex flex-column justify-content-between">
+		<div class="site-information justify-content-between">
 			{% if site_logo %}
 				<div class="logo">
 					<a href="{{ front_page }}">{{ site_logo }}</a>
@@ -21,7 +21,7 @@
 		<div class="">
 			<input type="checkbox" name="slider" id="menu-btn"/>
 
-			<ul class="nav-links">
+			<ul class="nav-links menu">
 				<label for="menu-btn" class="menu-hamburger close-btn">
 					<i class="fas fa-times"></i>
 				</label>

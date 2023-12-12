@@ -1,0 +1,23 @@
+block.block.hbk_cforge_masquerade.ymluuid: 9b99e742-f0a6-40d7-a01e-caf80b5252cb
+langcode: en
+status: true
+dependencies:
+  module:
+    - masquerade
+  theme:
+    - hbk_cforge
+_core:
+  default_config_hash: cQMkQvVrAN1ITdEhcymqquHqOF0hfw3qLgCd72FGZW4
+id: hbk_cforge_masquerade
+theme: hbk_cforge
+region: sidebar_right
+weight: 2
+provider: cforge
+plugin: masquerade
+settings:
+  id: masquerade
+  label: Masquerade
+  label_display: visible
+  provider: masquerade
+  show_unmasquerade_link: false
+visibility: {}

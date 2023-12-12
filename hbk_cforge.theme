@@ -76,6 +76,19 @@ function hbk_cforge_preprocess_region(&$variables) {
  * Implements hook_preprocess_HOOK() for page.html.twig.
  */
 function hbk_cforge_preprocess_page(&$variables) {
+    $site_name = \Drupal::config('system.site')->get('name');
+    $variables["site_name"] = $site_name;
+
+    $site_configs =  \Drupal::Config('hbk_cforge.settings')->get();
+    if (isset($site_configs["social"]) && $site_configs["social"]["show_social"]) {
+        $variables["socials"] = [
+            "title" => $site_configs["social"]["title"]
+        ];
+        $variables["socials"]["socials"] = $variables["socials"] + $site_configs["social"];
+        $variables["socials"]["svg_class"] = $variables["socials"]["socials"]["show_bottom_svg"] ? "with-svg" : "no-svg";
+    }
+
+    // set the variable site name for render
     $config = \Drupal::config('system.theme.global');
     $logo_path = $config->get('logo.path');
 
@@ -113,7 +126,6 @@ function hbk_cforge_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $for
 function hbk_cforge_preprocess_views_view_unformatted(&$variables) {
     $route_match = \Drupal::service('current_route_match');
     $page_entity = $route_match->getParameters()->all();
-    // dump($variables["view"]);
     /**
      *
      * @var Symfony\Component\HttpFoundation\RequestStack $request_stack
@@ -169,22 +181,14 @@ function hbk_cforge_preprocess_node(&$variables) {
         unset($variables['content']['field_tags']);
     }
     if (!Drupal::currentUser()->isAuthenticated() && empty($variables["content"]["comment"][0]["comments"])) {
-        // dump($variables["content"]["comment"][0]);
         unset($variables["content"]["comment"]);
     }
-    /**
-     *
-     * @var \Drupal\Node\Entity\Node $image_entity
-     */
-    // $image_entity = $variables["content"]["image"]["#object"];
-    // dump([$imageStyle, $file, $file->getFileUri()]);
 }
 
 /**
  * Implements hook_theme() to define the theme hook for the slider_block.
  */
 function hbk_cforge_theme($existing, $type, $theme, $path) {
-    // dump([$existing, $type, $theme, $path]);
     return [
         'slider_block' => [
             'variables' => [
@@ -207,13 +211,6 @@ function theme_slider_block($variables) {
 }
 
 /**
- * Implements hook_block()
- */
-function hbk_cforge_preprocess_block($variables) {
-    // dump($variables);
-}
-
-/**
  * Implements hook_views_pre_render().
  */
 function hbk_cforge_views_pre_render(\Drupal\views\ViewExecutable $view) {
@@ -230,7 +227,6 @@ function hbk_cforge_preprocess_comment__comment(&$variables) {
     $user = \Drupal::entityTypeManager()->getStorage("user")->load(2);
     $variables["user_name"] = $user->getAccountName();
     $variables["has_profile_picture"] = $user->get("user_picture")->entity ? TRUE : FALSE;
-    // dump($variables);
 }
 
 /**
