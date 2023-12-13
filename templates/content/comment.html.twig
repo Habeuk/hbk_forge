@@ -66,7 +66,6 @@
  * @see template_preprocess_comment()
  */
 #}
-
 {% if threaded %}
 	{{ attach_library('starterkit_theme/indented') }}
 {% endif %}
@@ -78,16 +77,16 @@
     comment.owner.anonymous ? 'by-anonymous',
     author_id and author_id == commented_entity.getOwnerId() ? 'by-' ~ commented_entity.getEntityTypeId() ~ '-author',
     'pt-3',
+    'mb-5'
   ]
 %}
 <article{{attributes.addClass(classes)}}>
 	{#    
-																  Hide the "new" indicator by default, let a piece of JavaScript ask the
-																  server which comments are new for the user. Rendering the final "new"
-																  indicator here would break the render cache.
-																#}
+	  Hide the "new" indicator by default, let a piece of JavaScript ask the
+	  server which comments are new for the user. Rendering the final "new"
+	  indicator here would break the render cache.
+	#}
 	<mark class="hidden" data-comment-timestamp="{{ new_indicator_timestamp }}"></mark>
-
 	{% if submitted %}
 		<footer class="comment__meta">
 			<div class="d-flex justify-content-start comment-user-profil">
@@ -108,18 +107,16 @@
 				{% endtrans %}
 			</div>
 			{# Indicate the semantic relationship between parent and child comments for
-																																																		  accessibility. The list is difficult to navigate in a screen reader
-																																																		  without this information.
-																																																		#}
+																																																											  accessibility. The list is difficult to navigate in a screen reader
+																																																											  without this information.
+																																																											#}
 			{% if parent %}
 				<p class="parent visually-hidden">
 					{{ parent }}</p>
 			{% endif %}
-
 			{# {{ permalink }} #}
 		</footer>
 	{% endif %}
-
 	<div{{content_attributes.addClass('content')}}>
 		{% if title %}
 			{{ title_prefix }}

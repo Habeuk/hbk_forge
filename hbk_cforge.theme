@@ -186,9 +186,6 @@ function hbk_cforge_preprocess_node(&$variables) {
         }
         unset($variables['content']['field_tags']);
     }
-    if (!Drupal::currentUser()->isAuthenticated() && empty($variables["content"]["comment"][0]["comments"])) {
-        unset($variables["content"]["comment"]);
-    }
 }
 
 /**
