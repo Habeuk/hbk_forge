@@ -136,10 +136,9 @@ h1.page-title {
 }
 
 #page-sidebar_right {
-	&>div {
-
-		&>div,
-		&>nav {
+	& > div {
+		& > div,
+		& > nav {
 			margin-bottom: 30px;
 
 			h3 {
@@ -240,7 +239,6 @@ article.comment {
 
 .cforge-table {
 	tr {
-
 		td,
 		th {
 			padding-block: 1.8rem;
@@ -266,5 +264,10 @@ article.comment {
 				}
 			}
 		}
+	}
+}
+.page-footer {
+	.end-footer {
+		background-color: $wbu-color-thirdly;
 	}
 }

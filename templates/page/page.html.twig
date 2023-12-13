@@ -181,21 +181,21 @@
 		</div>
 	{% endif %}
 	{# {% if page.footer or page.footer_col %}
-												<footer id='page-footer' class=" pt-5 pb-2 bg-primary text-light page-footer">
-													<div class="container">
-														{% if page.footer_col %}
-															<div class="d-flex cforge-footer-col">
-																{{page.footer_col}}
-															</div>
-														{% endif %}
-														{% if page.footer %}
-															<div id="footer-content" class="cforge-footer-content text-left text-sm-center">
-																{{ page.footer }}
-															</div>
-														{% endif %}
-													</div>
-												</footer>
-											{% endif %} #}
+															<footer id='page-footer' class=" pt-5 pb-2 bg-primary text-light page-footer">
+																<div class="container">
+																	{% if page.footer_col %}
+																		<div class="d-flex cforge-footer-col">
+																			{{page.footer_col}}
+																		</div>
+																	{% endif %}
+																	{% if page.footer %}
+																		<div id="footer-content" class="cforge-footer-content text-left text-sm-center">
+																			{{ page.footer }}
+																		</div>
+																	{% endif %}
+																</div>
+															</footer>
+														{% endif %} #}
 	{% set whole_footer_flex = "justify-content-end" %}
 	{% if page.footer %}
 		{% set whole_footer_flex = "justify-content-between" %}
@@ -210,14 +210,15 @@
 					</div>
 				{% endif %}
 
-				<div class="col-sm-6 main-footer-right">
+				<div class="col-sm-6 main-footer-right text-center">
+
 					{% if site_logo %}
-						<div class="footer-site-logo">
+						<div class="footer-site-logo mb-2">
 							<a href="/">
 								{{site_logo}}
 							</a>
 						</div>
-						<div class="footer-site-name font-weight-bold text-center">
+						<div class="footer-site-name font-weight-bold ">
 							<a href="/">
 								{{site_name}}
 							</a>

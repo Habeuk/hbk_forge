@@ -42,7 +42,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "../"),
-    filename: "./js" + color_dir + "/[name].js",
+    filename: "./js/" + color_dir + "[name].js",
   },
   devtool: devMode ? "inline-source-map" : false,
   module: {
