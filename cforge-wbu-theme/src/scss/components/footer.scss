@@ -3,6 +3,7 @@
 .page-footer {
     .main-footer {
         .main-footer-left {
+
             .menu-item,
             .menu-element {
                 margin-bottom: 5px;
@@ -22,5 +23,35 @@
 
     a {
         color: white;
+    }
+
+    .end-footer {
+        .region--footer_end {
+            .menu-wrapper {
+                padding-block: 0 !important;
+
+                .nav-links {
+                    margin: 0;
+                    display: flex;
+
+                    .menu-element {
+                        display: inline-block;
+                        padding-inline: 8px;
+                        position: relative;
+
+                        &:has(+.menu-element) ::after {
+                            content: "";
+                            position: absolute;
+                            top: 2px;
+                            bottom: 2px;
+                            right: 0;
+                            width: 2px;
+                            transform: translateX(50%);
+                            background-color: $light;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
