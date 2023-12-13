@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - hbk_cforge
+_core:
+  default_config_hash: 1hxEQFY76SHaDbp3i3mxdesWK5qFSNaWjPE1XW-dFy4
+id: breadcrumbs
+theme: hbk_cforge
+region: slider
+weight: -5
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: "0"
+  provider: system
+visibility: {}

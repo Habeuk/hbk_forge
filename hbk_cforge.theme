@@ -153,24 +153,30 @@ function hbk_cforge_preprocess_views_view_table(&$variables) {
  * Implements hook_preprocess_HOOK() for node.html.twig.
  */
 function hbk_cforge_preprocess_node(&$variables) {
-    // dump($variables["content"]);
     $image_id = null;
+    $no_image = false;
     if (isset($variables['content']['field_image']) && !isset($variables['content']['image'])) {
 
         $image_id = $variables["content"]["field_image"][0]["#item"]->getvalue()["target_id"];
         unset($variables["content"]["field_image"]);
-    } else {
+    } elseif (isset($variables["content"]["image"][0]["#item"])) {
+        # code...
         $image_id = $variables["content"]["image"][0]["#item"]->getvalue()["target_id"];
+    } else {
+        $no_image = true;
     }
-    $file = File::load($image_id);
-    $imageStyle = ImageStyle::load('large');
-    $uri = $imageStyle->buildUrl($file->getFileUri());
+    if (!$no_image) {
+        # code...
+        $file = File::load($image_id);
+        $imageStyle = ImageStyle::load('large');
+        $uri = $imageStyle->buildUrl($file->getFileUri());
 
-    $variables["content"]["image"] = [
-        '#theme' => 'image',
-        '#uri' => $uri,
-        '#alt' => 'Description de l\'image'
-    ];
+        $variables["content"]["image"] = [
+            '#theme' => 'image',
+            '#uri' => $uri,
+            '#alt' => 'Description de l\'image'
+        ];
+    }
     if (isset($variables['content']['field_tags']) && !isset($variables['tags'])) {
         $i = 0;
         $variables['content']['tags'] = [];

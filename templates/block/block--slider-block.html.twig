@@ -11,7 +11,7 @@
 			class="swiper-wrapper">
 			<!-- Slides -->
 			{% for slide in content.sliders %}
-				{% if slide.image %}
+				{% if slide.image and slide.show_slide %}
 					<div class="swiper-slide">
 						<div class="mitor-hero-2 mitor-hero-2--text-left">
 

@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - hbk_cforge
+id: mainpagecontent
+theme: hbk_cforge
+region: content
+weight: -4
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: "Main page content"
+  label_display: visible
+  provider: system
+visibility: {}

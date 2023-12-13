@@ -67,6 +67,7 @@
  *
  */
 #}
+
 {%
   set classes = [
     'node',
@@ -89,21 +90,22 @@
 	{% endif %}
 	{{ title_suffix }}
 
-	{% if display_submitted %}
-		<div{{content_attributes.addClass('node__content')}}>
-			<div class="main-node pb-3">
+	<div{{content_attributes.addClass('node__content')}}>
+		<div class="main-node pb-3">
 
-				{% if content.image %}
-					<div class="node--image text-center mb-3">
-						{{content.image}}
-					</div>
-				{% endif %}
-				{% if content.body %}
-					<div class="node--body">
-						{{content.body}}
-					</div>
-				{% endif %}
+			{% if content.image %}
+				<div class="node--image text-center mb-3">
+					{{content.image}}
+				</div>
+			{% endif %}
+			{% if content.body %}
+				<div class="node--body">
+					{{content.body}}
+				</div>
+			{% endif %}
+			{% if display_submitted %}
 				<header class="node__meta d-sm-flex justify-content-between align-item-center mt-5">
+
 					<div class="small text-black-50 meta mb-3 mb-sm-0">
 						{% trans %}
 						{{ date }}
@@ -121,25 +123,26 @@
 						</div>
 					{% endif %}
 				</header>
+			{% endif %}
 
-			</div>
 
-			{% if content.comment %}
-				{% if content.comment[0]["comments"] %}
-					<div class="comments mt-sm-5 mb-5">
-						{{content.comment[0]["comments"]}}
-					</div>
-				{% endif %}
-				{% if content.comment[0]["comment_form"] %}
-					<div class="node-comment-form">
-						<div class="d-flex justify-content-center border mb-5 py-5 cforge-bg-gray-200">
-							<div class="w-75 comment-form">
-								{{content.comment[0]["comment_form"]}}
-							</div>
+		</div>
+
+		{% if content.comment %}
+			{% if content.comment[0]["comments"] %}
+				<div class="comments mt-sm-5 mb-5">
+					{{content.comment[0]["comments"]}}
+				</div>
+			{% endif %}
+			{% if content.comment[0]["comment_form"] %}
+				<div class="node-comment-form">
+					<div class="d-flex justify-content-center border mb-5 py-5 cforge-bg-gray-200">
+						<div class="w-75 comment-form">
+							{{content.comment[0]["comment_form"]}}
 						</div>
 					</div>
-				{% endif %}
+				</div>
 			{% endif %}
-		</div>
-	{% endif %}
+		{% endif %}
+	</div>
 </article>
