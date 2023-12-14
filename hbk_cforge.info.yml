@@ -18,3 +18,5 @@ regions:
   bottom: "before footer"
   footer: "Footer left"
   footer_end: "Footer bottom"
+dependencies:
+  - hbk_cforge_mod:hbk_cforge_mod

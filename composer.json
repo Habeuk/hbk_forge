@@ -10,5 +10,7 @@
     }
   ],
   "minimum-stability": "dev",
-  "require": {}
+  "require": {
+  	"habeuk/hbk_cforge_mod": "^1.0|dev-1x",
+  }
 }
