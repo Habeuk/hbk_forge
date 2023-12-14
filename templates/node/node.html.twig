@@ -67,6 +67,11 @@
  *
  */
 #}
+
+{#
+* Cette affichage permet de gerer les teasers.
+*
+#}
 {% set lib_name = "hbk_cforge/teaser-style" %}
 {% if cforge_lib_suffix %}
 	{% set lib_name = lib_name ~ cforge_lib_suffix %}
@@ -77,7 +82,7 @@
 <div class="metro-service">
 	<div class="metro-service__img">
 		<a href="{{url}}" class=" ">
-			{{content.image}}
+			{{content.image[0]}}
 		</a>
 	</div>
 	<div class="metro-service__body w-100">
@@ -89,7 +94,6 @@
 			{% endif %}
 			<div{{content_attributes.addClass('node__content')}}>
 				<a href="{{url}}">{{ content.body }}</a>
-
 			</div>
 		</div>
 		{% if content.tags %}
@@ -97,7 +101,6 @@
 				{% for tag in content.tags %}
 					<div class="link-label">
 						{{tag}}
-						{# <a href="#">tristique</a> #}
 					</div>
 				{% endfor %}
 			</div>

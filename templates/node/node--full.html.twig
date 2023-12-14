@@ -90,7 +90,7 @@
 	<div{{content_attributes.addClass('node__content')}}>
 		<div class="main-node pb-3">
 			{% if content.image %}
-				<div class="node--image text-center mb-3">
+				<div class="node--image text-center mb-4">
 					{{content.image}}
 				</div>
 			{% endif %}
@@ -112,7 +112,6 @@
 							{% for tag in content.tags %}
 								<div class="node-tag-link">
 									{{tag}}
-									{# <a href="#">tristique</a> #}
 								</div>
 							{% endfor %}
 						</div>

@@ -1,11 +1,20 @@
 <?php
 use Drupal\file\Entity\File;
 use Drupal\image\Entity\ImageStyle;
+use Drupal\Core\Render\Element;
+use Drupal\hbk_cforge\Preprocess;
 
 /**
  *
  * @file
  * Functions to support theming in the HBK cforge theme.
+ */
+
+/**
+ * implment hook_library_info_alter
+ *
+ * @param array $libraries
+ * @param string $extension
  */
 function hbk_cforge_library_info_alter(&$libraries, $extension) {
   $cforge_libs = [
@@ -46,17 +55,11 @@ function hbk_cforge_preprocess_image(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for html.html.twig.
- */
-function hbk_cforge_preprocess_html(&$variables) {
-}
-
-/**
+ * implment hook_preprocess_HOOK
  *
  * @param array $variables
  */
 function hbk_cforge_preprocess_image_widget(&$variables) {
-  //
   if (isset($variables['data']['alt'])) {
     if (!isset($variables['data']['alt']['#wrapper_attributes']['class']))
       $variables['data']['alt']['#wrapper_attributes']['class'] = [];
@@ -71,7 +74,7 @@ function hbk_cforge_preprocess_image_widget(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for page.html.twig.
+ * Implements hook_preprocess_HOOK()
  */
 function hbk_cforge_preprocess_region(&$variables) {
   if (!isset($variables['attributes']['class']))
@@ -95,24 +98,7 @@ function hbk_cforge_preprocess_page(&$variables) {
     $variables["socials"]["socials"] = $variables["socials"] + $site_configs["social"];
     $variables["socials"]["svg_class"] = $variables["socials"]["socials"]["show_bottom_svg"] ? "with-svg" : "no-svg";
   }
-  
-  // set the variable site name for render
-  $config = \Drupal::config('system.theme.global');
-  $logo_path = $config->get('logo.path');
-  
-  // Load the file entity using the file ID.
-  if ($logo_path) {
-    # code...
-    
-    $site_logo = [
-      '#theme' => 'image',
-      '#uri' => $logo_path,
-      '#alt' => 'Description de l\'image'
-    ];
-    
-    // set the variables for the site logo
-    $variables["site_logo"] = $site_logo;
-  }
+  Preprocess::getSiteInformation($variables);
 }
 
 /**
@@ -162,38 +148,51 @@ function hbk_cforge_preprocess_views_view_table(&$variables) {
  * Implements hook_preprocess_HOOK() for node.html.twig.
  */
 function hbk_cforge_preprocess_node(&$variables) {
-  $image_id = null;
-  $no_image = false;
-  dd($variables);
-  if (isset($variables['content']['field_image']) && !isset($variables['content']['image'])) {
-    $image_id = $variables["content"]["field_image"][0]["#item"]->getvalue()["target_id"];
-    unset($variables["content"]["field_image"]);
-  }
-  elseif (isset($variables["content"]["image"][0]["#item"])) {
-    # code...
-    $image_id = $variables["content"]["image"][0]["#item"]->getvalue()["target_id"];
-  }
-  else {
-    $no_image = true;
-  }
-  if (!$no_image) {
-    $file = File::load($image_id);
-    $imageStyle = ImageStyle::load('large');
-    $uri = $imageStyle->buildUrl($file->getFileUri());
-    $variables["content"]["image"] = [
-      '#theme' => 'image',
-      '#uri' => $uri,
-      '#alt' => 'Description de l\'image'
-    ];
-  }
-  if (isset($variables['content']['field_tags']) && !isset($variables['tags'])) {
-    $i = 0;
-    $variables['content']['tags'] = [];
-    $tags = $variables['content']['field_tags'];
-    while (isset($tags[$i])) {
-      $variables['content']['tags'][] = $tags[$i++];
+  if (!empty($variables['node'])) {
+    
+    // Recuperation de l'image afin de definir le style de rendu.
+    /**
+     *
+     * @var \Drupal\node\Entity\Node $node
+     */
+    $node = $variables['node'];
+    $imgs = [];
+    if ($node->hasField('image')) {
+      $imgs = $node->get('image')->getValue();
     }
-    unset($variables['content']['field_tags']);
+    elseif ($node->hasField('field_image')) {
+      $imgs = $node->get('field_image')->getValue();
+    }
+    $variables["content"]["image"] = [];
+    if ($imgs) {
+      foreach ($imgs as $imgInfo) {
+        $file = File::load($imgInfo['target_id']);
+        $imageStyle = ImageStyle::load('image_article');
+        $uri = $imageStyle->buildUrl($file->getFileUri());
+        $variables["content"]["image"][] = [
+          '#theme' => 'image',
+          '#uri' => $uri,
+          '#alt' => $imgInfo['alt']
+        ];
+      }
+    }
+    // Recupere les valeurs de tags.
+    if (!empty($variables['content']['field_tags'])) {
+      $keys = Element::children($variables['content']['field_tags']);
+      $elements = [];
+      foreach ($keys as $key) {
+        $elements[] = $variables['content']['field_tags'][$key];
+      }
+      $variables['content']['tags'] = $elements;
+    }
+    elseif (!empty($variables['tags'])) {
+      $keys = Element::children($variables['content']['tags']);
+      $elements = [];
+      foreach ($keys as $key) {
+        $elements[] = $variables['content']['field_tags'][$key];
+      }
+      $variables['content']['tags'] = $elements;
+    }
   }
 }
 
@@ -245,26 +244,7 @@ function hbk_cforge_preprocess_comment__comment(&$variables) {
  * Implements hook_preprocess_HOOK() menu__main
  */
 function hbk_cforge_preprocess_menu__main(&$variables) {
-  $site_name = \Drupal::config('system.site')->get('name');
-  // set the variable site name for render
-  $variables["site_name"] = $site_name;
-  
-  $config = \Drupal::config('system.theme.global');
-  $logo_path = $config->get('logo.path');
-  
-  // Load the file entity using the file ID.
-  if ($logo_path) {
-    # code...
-    
-    $site_logo = [
-      '#theme' => 'image',
-      '#uri' => $logo_path,
-      '#alt' => 'Description de l\'image'
-    ];
-    
-    // set the variables for the site logo
-    $variables["site_logo"] = $site_logo;
-  }
+  Preprocess::getSiteInformation($variables);
 }
 
 /**

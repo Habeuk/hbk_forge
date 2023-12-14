@@ -1,9 +1,14 @@
 @use './drush_site_install_variables.scss' as *;
 @use '@stephane888/wbu-atomique/scss/bootstrap-all.scss';
+@use "@stephane888/wbu-atomique/scss/atome/typography/_default.scss";
+@use "@stephane888/wbu-atomique/scss/molecule/default-class.scss";
 @use './custom.scss';
 @use './input-style.scss';
 @use './node--full.scss';
-
+.container{
+	max-width: 1400px;
+	width: 100%;	
+}
 .cforge-bg-light {
 	background-color: $light !important;
 
@@ -269,5 +274,24 @@ article.comment {
 .page-footer {
 	.end-footer {
 		background-color: $wbu-color-thirdly;
+	}
+}
+
+/**
+ * Format message in widget image.
+ */
+.form-managed-file {
+	.messages{
+		@extend .alert;
+		@extend .mx-4;
+		&--error{
+			@extend .alert-danger;			
+		}
+		&--warning{
+			@extend .alert-warning;			
+		}
+		&--success{
+			@extend .alert-success;			
+		}
 	}
 }

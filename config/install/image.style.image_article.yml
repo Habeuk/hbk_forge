@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: image_article
+label: 'image article'
+effects:
+  48f259af-1d95-48e7-a66a-e23ce7d0d56c:
+    uuid: 48f259af-1d95-48e7-a66a-e23ce7d0d56c
+    id: image_scale
+    weight: 1
+    data:
+      width: 980
+      height: 550
+      upscale: false

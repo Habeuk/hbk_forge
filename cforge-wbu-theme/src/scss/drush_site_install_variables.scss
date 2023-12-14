@@ -3,21 +3,21 @@
      * Example : $wbu-h1-font-size est definie ici, les derivées $wbu-h1-font-size-md, $wbu-h1-font-size-sm vont etre
      * egalement surcharger.
      */
-//color
+// color
 // Teal color
-// $wbu-color-primary: teal;
-// $wbu-color-secondary: #0e0e0e;
-// $wbu-color-thirdly: #003a3a !default;
+$wbu-color-primary: teal;
+$wbu-color-secondary: #0e0e0e;
+$wbu-color-thirdly: #003a3a !default;
 
-//Purple Color
+// Purple Color
 // $wbu-color-primary: #4c53b3;
 // $wbu-color-secondary: #0e0e0e;
 // $wbu-color-thirdly: #242866;
 
-//Passion Color
-$wbu-color-primary: #aa0a33;
-$wbu-color-secondary: #0e0e0e;
-$wbu-color-thirdly: #500518;
+// Passion Color
+// $wbu-color-primary: #aa0a33;
+// $wbu-color-secondary: #0e0e0e;
+// $wbu-color-thirdly: #500518;
 
 $wbu-background: #0f103e !default;
 $wbu-link-color: $wbu-color-primary;
