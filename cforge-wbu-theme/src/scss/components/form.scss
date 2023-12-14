@@ -1,26 +1,27 @@
-@use '../drush_site_install_variables.scss' as *;
+@use "../drush_site_install_variables.scss" as *;
 .js-text-format-wrapper {
-    padding: 1rem 3rem;
-    border: 1px solid #ccc;
-    background: #fdfcfc;
+  padding: 1rem 3rem;
+  border: 1px solid #ccc;
+  background: #fdfcfc;
 }
 legend {
-    .btn-collapse {
-        position: relative;
-        padding-right: 5Opx;
-        svg {
-            position: absolute;
-            right: 10px;
-            width: 21px;
-            aspect-ratio: 1/2;
-            transform: translateY(-50%);
-            top: 50%;
-            transition: all 0.3s ease-in;
-        }
-        &[aria-expanded='true'] {
-            svg {
-                transform: translateY(-50%) rotate(180deg);
-            }
-        }
+  .btn-collapse {
+    position: relative;
+    padding-right: 5Opx;
+    svg {
+      position: absolute;
+      right: 10px;
+      width: 21px;
+      height: 21px;
+      aspect-ratio: 1/2;
+      transform: translateY(-50%) rotate(90deg);
+      top: 50%;
+      transition: all 0.3s ease-in;
     }
+    &[aria-expanded="true"] {
+      svg {
+        transform: translateY(-50%) rotate(-90deg);
+      }
+    }
+  }
 }

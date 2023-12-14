@@ -24,9 +24,9 @@ function hbk_cforge_library_info_alter(&$libraries, $extension) {
     "slider",
     "breadcrumb",
     "teaser",
-    "text-image"
+    "text-image",
+    "general"
   ];
-  
   foreach ($cforge_libs as $lib) {
     $lib_full_name = $lib . "-style";
     $current_theme = \Drupal::Config('hbk_cforge.settings')->get("hbk_cforge")["current_theme"] ?? "";
@@ -46,7 +46,7 @@ function hbk_cforge_library_info_alter(&$libraries, $extension) {
 }
 
 /**
- * implement hook_preprocess_image
+ * Implement hook_preprocess_image
  *
  * @param int $variables
  */

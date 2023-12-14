@@ -1,4 +1,4 @@
-# Main theme library.
+# Les librairies definie ici sont surcharger par le hbk_cforge_library_info_alter().
 global-style:
   css:
     theme:
