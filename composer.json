@@ -11,6 +11,6 @@
   ],
   "minimum-stability": "dev",
   "require": {
-  	"habeuk/hbk_cforge_mod": "^1.0|dev-1x",
+  	"habeuk/hbk_cforge_mod": "^1.0|dev-1x"
   }
 }
