@@ -167,7 +167,14 @@ function hbk_cforge_preprocess_node(&$variables) {
     if ($imgs) {
       foreach ($imgs as $imgInfo) {
         $file = File::load($imgInfo['target_id']);
-        $imageStyle = ImageStyle::load('image_article');
+        $imageStyle = null;
+        if ($variables['view_mode'] == 'full') {
+          $imageStyle = ImageStyle::load('image_article');
+          if (!$imageStyle)
+            $imageStyle = ImageStyle::load('wide');
+        }
+        if (!$imageStyle)
+          $imageStyle = ImageStyle::load('large');
         $uri = $imageStyle->buildUrl($file->getFileUri());
         $variables["content"]["image"][] = [
           '#theme' => 'image',
