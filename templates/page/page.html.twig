@@ -230,14 +230,30 @@
 
 
 		<div class="end-footer small py-5">
-			<div class="container d-flex justify-content-between px-4">
-				<div class="end-footer-left">© 2023 habeuk – Tous droits réservés.</div>
-				{% if page.footer_end %}
-					<div class="end-footer-right menu-bar">
-						{{page.footer_end}}
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5">
+						<div class="end-footer-left"> © 2023 SEL – Tous droits réservés. </div>
 					</div>
-				{% endif %}
-			</div>
+					{% if page.footer_end %}
+					<div class="col-md-7">
+    					<div class="end-footer-right menu-bar d-flex justify-content-md-end">
+    						{{page.footer_end}}
+    					</div>
+					</div>
+					{% endif %}
+				</div>
+			</div>			
+{# 			<div class="container d-flex justify-content-between px-4">#}
+{# 				<div class="end-footer-left"> © 2023 SEL – Tous droits réservés. </div>#}
+{# 				{% if page.footer_end %}#}
+{# 					<div class="end-footer-right menu-bar">#}
+{# 						{{page.footer_end}}#}
+{# 					</div>#}
+{# 				{% endif %}#}
+{# 			</div>#}
+			
+			
 		</div>
 	</footer>
 </div>

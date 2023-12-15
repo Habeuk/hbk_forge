@@ -1,57 +1,64 @@
-@use '../drush_site_install_variables.scss' as *;
+@use "../drush_site_install_variables.scss" as *;
 
 .page-footer {
-    .main-footer {
-        .main-footer-left {
-
-            .menu-item,
-            .menu-element {
-                margin-bottom: 5px;
-                line-height: 2rem;
-            }
-        }
-
-        .main-footer-right {
-            .footer-site-logo {
-                img {
-                    max-width: 100%;
-                    max-height: 100%;
-                }
-            }
-        }
+  .main-footer {
+    .main-footer-left {
+      .menu-item,
+      .menu-element {
+        margin-bottom: 5px;
+        line-height: 2rem;
+      }
     }
 
-    a {
-        color: white;
-    }
-
-    .end-footer {
-        .region--footer_end {
-            .menu-wrapper {
-                padding-block: 0 !important;
-
-                .nav-links {
-                    margin: 0;
-                    display: flex;
-
-                    .menu-element {
-                        display: inline-block;
-                        padding-inline: 8px;
-                        position: relative;
-
-                        &:has(+.menu-element) ::after {
-                            content: "";
-                            position: absolute;
-                            top: 2px;
-                            bottom: 2px;
-                            right: 0;
-                            width: 2px;
-                            transform: translateX(50%);
-                            background-color: $light;
-                        }
-                    }
-                }
-            }
+    .main-footer-right {
+      .footer-site-logo {
+        img {
+          max-width: 100%;
+          max-height: 100%;
         }
+      }
     }
+  }
+
+  a {
+    color: white;
+  }
+
+  .end-footer {
+    .region--footer_end {
+      .menu-wrapper {
+        padding-block: 0 !important;
+
+        .nav-links {
+          margin: 0;
+          display: flex;
+          flex-wrap: wrap;
+          // hide submenu
+          .menu-element {
+            ul,
+            label {
+              display: none;
+            }
+          }
+
+          .menu-element {
+            display: inline-block;
+            padding-inline: 8px;
+            position: relative;
+
+            &:has(+ .menu-element) ::after {
+              content: "";
+              position: absolute;
+              top: 2px;
+              bottom: 2px;
+              right: 0;
+              width: 2px;
+              transform: translateX(50%);
+              background-color: $light;
+            }
+          }
+        }
+      }
+    }
+  }
 }

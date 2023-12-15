@@ -1,7 +1,7 @@
 name: HBK cforge
 type: theme
 base theme: stable9
-description: A flexible theme with a responsive layout.
+description: A flexible theme with a responsive layout. (made by Habeuk for Community Forge)
 package: Custom
 core_version_requirement: ^9 | ^10
 screenshot: screenshot.png
