@@ -104,6 +104,7 @@ function hbk_cforge_preprocess_region(&$variables) {
  * Implements hook_preprocess_HOOK() for page.html.twig.
  */
 function hbk_cforge_preprocess_page(&$variables) {
+  dump($variables['page']['content']['mainpagecontent']);
   $site_name = \Drupal::config('system.site')->get('name');
   $variables["site_name"] = $site_name;
   
@@ -243,6 +244,12 @@ function theme_slider_block($variables) {
   // ...
   
   return $content;
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function hbk_cforge_views_pre_render(\Drupal\views\ViewExecutable $view) {
 }
 
 /**

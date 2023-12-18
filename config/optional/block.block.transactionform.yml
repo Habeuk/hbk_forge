@@ -1,0 +1,29 @@
+langcode: fr
+status: true
+dependencies:
+  module:
+    - mcapi_forms
+    - system
+  theme:
+    - hbk_cforge
+id: transactionform
+theme: hbk_cforge
+region: sidebar_right
+weight: 0
+provider: null
+plugin: mc_form
+settings:
+  id: mc_form
+  label: "Bill a member"
+  label_display: visible
+  provider: mcapi_forms
+  editform_type:
+    provider: mcapi_forms
+    label: "Bill a member"
+    label_display: visible
+    editform_type: standard_bill
+visibility:
+  request_path:
+    id: request_path
+    pages: "transactions\r\nmembers\r\nuser*"
+    negate: false

@@ -1,0 +1,17 @@
+langcode: fr
+status: true
+dependencies:
+  theme:
+    - hbk_cforge
+id: actionsdadministrationprincipales
+theme: hbk_cforge
+region: content
+weight: -6
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: "Actions d'administration principales"
+  label_display: "0"
+  provider: core
+visibility: {}

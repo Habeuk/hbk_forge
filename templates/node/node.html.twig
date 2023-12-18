@@ -88,9 +88,9 @@
 	<div class="metro-service__body w-100">
 		<div href="{{url}}" class="node-title">
 			{% if label and not page %}
-				<h2{{title_attributes}}>
+				<h3{{title_attributes.addClass('mb-3')}}>
 					<a href="{{ url }}" rel="bookmark">{{ label }}</a>
-				</h2>
+				</h3>
 			{% endif %}
 			<div{{content_attributes.addClass('node__content')}}>
 				<a href="{{url}}">{{ content.body }}</a>

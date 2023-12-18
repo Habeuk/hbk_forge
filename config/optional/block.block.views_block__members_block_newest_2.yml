@@ -1,0 +1,28 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - views.view.members
+  module:
+    - system
+    - views
+  theme:
+    - hbk_cforge
+id: views_block__members_block_newest_2
+theme: hbk_cforge
+region: sidebar_right
+weight: 0
+provider: null
+plugin: "views_block:members-block_newest"
+settings:
+  id: "views_block:members-block_newest"
+  label: ""
+  label_display: visible
+  provider: views
+  views_label: ""
+  items_per_page: "5"
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "news\r\nmembers\r\nnode/*"

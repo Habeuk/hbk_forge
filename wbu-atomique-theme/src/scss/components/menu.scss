@@ -1,0 +1,19 @@
+@use "../drush_site_install_variables.scss" as *;
+
+nav {
+  ul.menu {
+    margin-left: 0;
+  }
+}
+.local-action-menu {
+  .local-link {
+    position: relative;
+    display: flex;
+    padding-left: 1.5rem;
+    &::before {
+      content: " + ";
+      display: block;
+      padding-right: 1rem;
+    }
+  }
+}

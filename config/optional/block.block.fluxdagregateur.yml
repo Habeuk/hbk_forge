@@ -1,0 +1,26 @@
+langcode: fr
+status: true
+dependencies:
+  module:
+    - aggregator
+    - system
+  theme:
+    - hbk_cforge
+id: fluxdagregateur
+theme: hbk_cforge
+region: sidebar_right
+weight: -7
+provider: null
+plugin: aggregator_feed_block
+settings:
+  id: aggregator_feed_block
+  label: "Flux d'agrégateur"
+  label_display: "0"
+  provider: aggregator
+  block_count: 2
+  feed: "1"
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/news*"

@@ -1,0 +1,19 @@
+langcode: fr
+status: true
+dependencies:
+  module:
+    - cforge
+  theme:
+    - hbk_cforge
+id: hamletsintrovid
+theme: hbk_cforge
+region: sidebar_right
+weight: 0
+provider: null
+plugin: hamlets_vid
+settings:
+  id: hamlets_vid
+  label: "Hamlets intro vid"
+  label_display: visible
+  provider: cforge
+visibility: {}
