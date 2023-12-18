@@ -16,10 +16,10 @@ const plugins = [];
  * example  const color_dir= "purple/";
  */
 // empty for default file.
-const color_dir = "teal/";
+// const color_dir = "teal/";
 // const color_dir = "passion/";
 // const color_dir = "purple/";
-// color_dir = "dark/";
+ color_dir = "dark/";
 plugins.push(
   new MiniCssExtractPlugin({
     filename: "./css/" + color_dir + "[name].css",
