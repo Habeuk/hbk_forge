@@ -6,17 +6,17 @@
 @use "./input-style.scss";
 @use "./node--full.scss";
 
-body{
-	/**
+body {
+  /**
 	 *
 	 */
- .metro-service{
-	 min-height: 250px;	 
- }	
+  .metro-service {
+    min-height: 250px;
+  }
 }
 .container {
-  max-width: 1400px;
-  width: 100%;
+  max-width: 1200px !important;
+  width: 100% !important;
 }
 .cforge-bg-light {
   background-color: $light !important;
@@ -299,6 +299,3 @@ article.comment {
     }
   }
 }
-
-
- 
