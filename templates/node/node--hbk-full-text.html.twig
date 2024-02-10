@@ -82,9 +82,9 @@
 <article{{attributes.addClass(classes)}}>
 	{{ title_prefix }}
 	{% if label and not page %}
-		<h1{{title_attributes}}>
+		<h3{{title_attributes}}>
 			<a href="{{ url }}" rel="bookmark">{{ label }}</a>
-		</h1>
+		</h3>
 	{% endif %}
 	{{ title_suffix }}
 	<div{{content_attributes.addClass('node__content')}}>
@@ -118,20 +118,6 @@
 					{% endif %}
 				</header>
 			{% endif %}
-		</div>
-		{% if content.comments %}
-			{% if content.comments[0]["comments"] %}
-				<div class="comments mt-sm-5 mb-5">
-					{{content.comments[0]["comments"]}}
-				</div>
-			{% endif %}
-			<div class="node-comment-form">
-				<div class="d-flex justify-content-center border mb-5 py-5 cforge-bg-gray-200">
-					<div class="w-75 comment-form">
-						{{content.comments[0]["comment_form"]}}
-					</div>
-				</div>
-			</div>
-		{% endif %}
+		</div>		
 	</div>
 </article>

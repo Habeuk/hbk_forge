@@ -2,8 +2,8 @@
 
 namespace Drupal\hbk_cforge;
 
-class Preprocess {
-  
+class ThemeHelper {
+
   /**
    *
    * @param array $variables
@@ -23,5 +23,16 @@ class Preprocess {
       $variables["site_logo"] = $site_logo;
     }
   }
-  
+
+  /**
+   * Permet de retourner la bonne valeur de la clée.
+   * Les données de configuration ne supporte pas "%% key contains a dot which
+   * is not supported".
+   * On remplace . par - afin de differencie avec les _ definis au niveau du nom
+   * de la reoute.
+   */
+  public static function getValidKeyForConfig($key) {
+    return str_replace(".", '-', $key);
+  }
+
 }

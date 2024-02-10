@@ -15,7 +15,7 @@ body {
   }
 }
 .container {
-  max-width: 1200px !important;
+  max-width: 1500px !important;
   width: 100% !important;
 }
 .cforge-bg-light {
@@ -97,22 +97,6 @@ body {
   }
 }
 
-// .page-footer {
-// 	.cforge-footer-content {
-// 		a {
-// 			color: $wbu-color-secondary;
-
-// 			&:hover {
-// 				color: $wbu-color-thirdly;
-// 			}
-// 		}
-// 	}
-
-// 	.cforge -footer-col {
-// 		gap: 30px;
-// 	}
-// }
-
 nav {
   ul.cforge-menu {
     margin: 0;
@@ -130,15 +114,23 @@ nav {
     }
   }
 }
-
+/**
+ * Traitement container de page
+ */
 #wrapper {
-  .unformatted-view-article {
-    @extend .col-sm-6;
+  &:not(.front-page) {
+    .unformatted-view-article {
+      @extend .col-md-6;
+    }
   }
-
+  &.front-page {
+    .unformatted-view-article {
+      @extend .col-md-12;
+    }
+  }
   .no-side-region {
     .unformatted-view-article {
-      @extend .col-sm-3;
+      @extend .col-md-3;
     }
   }
 }
@@ -185,7 +177,15 @@ h1.page-title {
     }
   }
 }
-
+/**
+ * Formattage des pages articles.
+ */
+article {
+  .links {
+    @extend .puce-check;
+    @extend .puce-check--color-secondary;
+  }
+}
 article.comment {
   border-top: 1px solid $gray-400;
 }
@@ -275,11 +275,6 @@ article.comment {
     }
   }
 }
-.page-footer {
-  .end-footer {
-    background-color: $wbu-color-thirdly;
-  }
-}
 
 /**
  * Format message in widget image.
@@ -297,5 +292,15 @@ article.comment {
     &--success {
       @extend .alert-success;
     }
+  }
+}
+
+/**
+ * formatage des champs.
+ */
+.field {
+  margin-bottom: $wbu-margin;
+  .field__label {
+    font-weight: 600;
   }
 }

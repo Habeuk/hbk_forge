@@ -26,23 +26,30 @@
 					<i class="fas fa-times"></i>
 				</label>
 				{% for item in items %}
-					<li class="menu-element">
+                {%
+                    set item_classes = [
+                      'menu-element',
+                      item.is_expanded ? 'menu-item--expanded',
+                      item.is_collapsed ? 'menu-item--collapsed',
+                      item.in_active_trail ? 'menu-item--active-trail',
+                    ]
+                  %}                                    
+					<li {{ item.attributes.addClass(item_classes) }}>
 						{% if item.below %}
 							<a class="desktop-item font-weight-bold">{{ item.title }}</a>
-
 							<input type="checkbox" class="showDrop" id="showDrop{{ loop.index }}"/>
 							<label for="showDrop{{ loop.index }}" class="font-weight-bold mobile-item">{{ item.title }}</label>
-
-							<ul class="drop-menu">
-								{% for subItem in item.below %}
-									<li>
-										<a href="{{ subItem.url }}">{{ subItem.title }}</a>
-									</li>
-								{% endfor %}
-							</ul>
+							{% if item.below %}
+    							<ul class="drop-menu">
+    								{% for subItem in item.below %}
+    									<li>
+    										<a href="{{ subItem.url }}">{{ subItem.title }}</a>
+    									</li>
+    								{% endfor %}
+    							</ul>
+							{% endif %}
 						{% else %}
 							<a href="{{ item.url }}" class="font-weight-bold">{{ item.title }}</a>
-
 						{% endif %}
 					</li>
 				{% endfor %}

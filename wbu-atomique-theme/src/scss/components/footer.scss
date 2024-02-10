@@ -1,6 +1,12 @@
 @use "../drush_site_install_variables.scss" as *;
 
 .page-footer {
+  background-color: $wbu-color-primary;
+  color: color-yiq($wbu-color-primary);
+  .end-footer {
+    background-color: $wbu-color-thirdly;
+    color: color-yiq($wbu-color-thirdly);
+  }
   .main-footer {
     .main-footer-left {
       .menu-item,
@@ -21,7 +27,7 @@
   }
 
   a {
-    color: white;
+    color: inherit;
   }
 
   .end-footer {
@@ -54,7 +60,8 @@
               right: 0;
               width: 2px;
               transform: translateX(50%);
-              background-color: $light;
+              background-color: color-yiq($wbu-color-primary);
+              opacity: 0.4;
             }
           }
         }

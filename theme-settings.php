@@ -11,6 +11,58 @@ use Drupal\hbk_cforge_mod\Plugin\Block\SocialLinksBlock;
  * Implements hook_form_system_theme_settings_alter().
  */
 function hbk_cforge_form_system_theme_settings_alter(&$form, &$form_state) {
+  // Vertical tabs.
+  $form['hbk_cforge_settings'] = [
+    '#type' => 'vertical_tabs',
+    '#prefix' => '<h2><small>' . t('Customize the appearance of your site') . '</small></h2>',
+    '#weight' => -20
+  ];
+  /**
+   * Select templates for pages.
+   */
+  $form['hbk_cforge_node_template'] = [
+    '#type' => 'details',
+    '#title' => t('Node template'),
+    '#description' => t('Select node models for teaser rendering'),
+    '#group' => 'hbk_cforge_settings',
+    '#tree' => true,
+    '#open' => false
+  ];
+  // get nodes type
+  $node_types = \Drupal::entityTypeManager()->getStorage('node_type')->loadMultiple();
+  if ($node_types) {
+    foreach ($node_types as $node_type) {
+      $id = $node_type->id();
+      $form['hbk_cforge_node_template'][$id]['teaser'] = [
+        '#type' => 'select',
+        '#title' => $node_type->label(),
+        '#options' => [
+          '' => t('Title above the image'),
+          'hbk_full_text' => t('Full text')
+        ],
+        '#default_value' => theme_get_setting('hbk_cforge_node_template.' . $id . '.teaser')
+      ];
+    }
+  }
+  /**
+   * Display title.
+   */
+  $form['hbk_cforge_title_display'] = [
+    '#type' => 'details',
+    '#title' => t('Page title'),
+    '#description' => t("Manage title display"),
+    '#group' => 'hbk_cforge_settings',
+    '#tree' => true,
+    '#open' => false
+  ];
+  $form['hbk_cforge_title_display']['hidden'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Hides the system-generated title'),
+    '#description' => t("You need to enable the 'Page Title' rendering block"),
+    '#default_value' => theme_get_setting('hbk_cforge_title_display.hidden')
+  ];
+
+  // ////////////////////////////
   $configs = \Drupal::Config('hbk_cforge.settings')->get();
   $theme_list = [
     "teal" => t("Teal"),
@@ -45,7 +97,8 @@ function hbk_cforge_form_system_theme_settings_alter(&$form, &$form_state) {
   $form["social"] = [
     '#type' => 'details',
     '#title' => t('Social block'),
-    '#tree' => TRUE
+    '#tree' => TRUE,
+    '#weight' => 0
   ];
   $form["social"] += $social_block_configs;
 
@@ -69,9 +122,10 @@ function hbk_cforge_form_system_theme_settings_alter(&$form, &$form_state) {
 
   $form['hbk_cforge'] = [
     '#type' => 'details',
-    '#title' => t('HBK cforge'),
+    '#title' => t('Select a color'),
     '#tree' => TRUE,
-    '#open' => TRUE
+    '#open' => TRUE,
+    '#weight' => 0
   ];
 
   $form['hbk_cforge']['current_theme'] = [
@@ -86,10 +140,10 @@ function hbk_cforge_form_system_theme_settings_alter(&$form, &$form_state) {
     '#title' => t('Old Theme'),
     '#default_value' => $configs['hbk_cforge']["current_theme"] ?? ""
   ];
-  $form["#submit"][] = "_just_test";
+  $form["#submit"][] = "_clear_cache";
 }
 
-function _just_test(&$form, &$form_state) {
+function _clear_cache(&$form, &$form_state) {
   $configs = $form_state->getValue("hbk_cforge");
   if ($configs["old_theme"] != $configs["current_theme"]) {
     drupal_flush_all_caches();

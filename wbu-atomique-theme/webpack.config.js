@@ -16,10 +16,10 @@ const plugins = [];
  * example  const color_dir= "purple/";
  */
 // empty for default file.
-// const color_dir = "teal/";
+const color_dir = "teal/";
 // const color_dir = "passion/";
 // const color_dir = "purple/";
-const color_dir = "dark/";
+// const color_dir = "dark/";
 // const color_dir = "orange/";
 // const color_dir = "brown/";
 // const color_dir = "blue/";
