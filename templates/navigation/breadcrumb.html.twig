@@ -11,9 +11,9 @@
 
 
 {% set li_classes = "" %}
-{% set list_classes = "d-flex align-items-end breadcrumb-list"%}
+{% set list_classes = "d-flex align-items-end breadcrumb-list container"%}
 {% if breadcrumb %}
-	<nav class="breadcrumb" role="navigation" aria-labelledby="system-breadcrumb">
+	<nav class="breadcrumb " role="navigation" aria-labelledby="system-breadcrumb">
 		<h2 id="system-breadcrumb" class="visually-hidden">{{ 'Breadcrumb'|t }}</h2>
 		<ol class="{{list_classes}}">
 			{% for item in breadcrumb %}

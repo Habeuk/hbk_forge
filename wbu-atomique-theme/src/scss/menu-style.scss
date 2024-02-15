@@ -1,2 +1,78 @@
 @use "./drush_site_install_variables.scss" as *;
-@use "@stephane888/wbu-atomique/scss/organisme/cforge/cforge-menu.scss";
+@use "@stephane888/wbu-atomique/scss/organisme/sections/theme_builder/utilitaires/mega-menu/mega-menu.scss";
+@use "@stephane888/wbu-atomique/scss/organisme/sections/theme_builder/utilitaires/mega-menu/model-marseille.scss";
+.hbk-mega-menu.style-merseille {
+  padding: 0;
+  .block-logo {
+    text-align: center;
+
+    img {
+      max-width: 100%;
+      max-height: 100px;
+    }
+  }
+  .hbk-mega-menu--items {
+    .item-link {
+      &.is-active,
+      &:hover {
+        color: $wbu-color-primary;
+      }
+    }
+    @include media-min(DD) {
+      background-color: transparent;
+      justify-content: end;
+      > .item {
+        flex-grow: 0;
+        min-width: 100px;
+        > a.item-link {
+          padding-right: 0;
+        }
+        > .svg-arrow {
+          height: 8px;
+          width: 2.3rem;
+          padding: 0;
+          min-width: 2rem;
+        }
+        &.menu-item--active-trail {
+          &::before {
+            width: 100%;
+          }
+        }
+      }
+      .item-link {
+        font-size: 18px;
+      }
+    }
+    .hbk-mega-menu--items__sub {
+      > .item {
+        &::before {
+          position: absolute;
+          height: 2px;
+          top: auto;
+          bottom: 0;
+          left: 0;
+          right: auto;
+          @include media-min(DD) {
+            bottom: $wbu-margin * 0.35;
+            left: $wbu-margin;
+          }
+
+          width: 0;
+          background-color: $wbu-color-primary;
+          transition-property: all;
+          transition-duration: 0.15s;
+          transition-timing-function: ease-in-out;
+          content: "";
+        }
+        &:hover {
+          &::before {
+            width: 100%;
+            @include media-min(DD) {
+              width: calc(100% - #{$wbu-margin * 2});
+            }
+          }
+        }
+      }
+    }
+  }
+}

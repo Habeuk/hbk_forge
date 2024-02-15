@@ -1,2 +1,13 @@
-@use "./drush_site_install_variables.scss";
+@use "./drush_site_install_variables.scss" as *;
 @import "@stephane888/wbu-atomique/scss/organisme/cforge/cforge-slider.scss";
+
+// .cforge-slider-container {
+//   .mitor-hero-content {
+//     .container {
+//       // width: calc(100% - 80px) !important;
+//       // @include media-min(DD) {
+//       //   width: calc(100% - 80px) !important;
+//       // }
+//     }
+//   }
+// }
