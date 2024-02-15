@@ -36,6 +36,7 @@ slider-style:
     js/slider-style.js: { preprocess: false }
   dependencies:
     - core/drupal
+    - core/drupalSettings
 
 breadcrumb-style:
   css:
