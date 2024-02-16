@@ -27,6 +27,9 @@ menu-style:
       css/menu-style.css: {}
   js:
     js/menu-style.js: { preprocess: false }
+  dependencies:
+    - core/drupal
+    
 
 slider-style:
   css:
@@ -36,7 +39,6 @@ slider-style:
     js/slider-style.js: { preprocess: false }
   dependencies:
     - core/drupal
-    - core/drupalSettings
 
 breadcrumb-style:
   css:
