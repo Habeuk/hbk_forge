@@ -2,6 +2,10 @@
 @use "@stephane888/wbu-atomique/scss/organisme/sections/theme_builder/utilitaires/mega-menu/mega-menu.scss";
 @use "@stephane888/wbu-atomique/scss/organisme/sections/theme_builder/utilitaires/mega-menu/model-marseille.scss";
 .hbk-mega-menu.style-merseille {
+  z-index: unset;
+  &:hover {
+    z-index: 999;
+  }
   padding: 0;
   .block-logo {
     text-align: center;
@@ -11,7 +15,13 @@
       max-height: 100px;
     }
   }
+  @include media-min(DD) {
+    justify-content: end;
+  }
   .hbk-mega-menu--items {
+    &.open {
+      z-index: 999;
+    }
     .item-link {
       &.is-active,
       &:hover {
@@ -44,6 +54,9 @@
       }
     }
     .hbk-mega-menu--items__sub {
+      .item .item-link {
+        padding: $wbu-margin * 0.5 $wbu-margin;
+      }
       > .item {
         &::before {
           position: absolute;

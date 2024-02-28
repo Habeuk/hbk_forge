@@ -30,21 +30,23 @@
     	</ul>
 	{% endif %}
 {% endmacro %}
-
-<div class="hbk-mega-menu style-merseille container ">
-		<div class="logo block-logo">
-			{% if site_logo %}
-			<div class="logo">
-				<a href="/">{{ site_logo }}</a>
-			</div>
-			{% endif %}
-			{% if site_name %}
-			<a href="/" class="site-name font-weight-bold d-block py-3">{{site_name}}</a>
-			{% endif %}
-			{% if site_slogan %}
-			<span>{{site_slogan}}</span>
-			{% endif %}
-		</div>
+{% macro menu_container(items, attributes, show_icone_home, class_container, site_logo,site_name,site_slogan) %}
+<div class="hbk-mega-menu style-merseille {{ class_container }} ">
+		{% if site_logo %}
+    		<div class="logo block-logo">
+    			{% if site_logo %}
+    			<div class="logo">
+    				<a href="/">{{ site_logo }}</a>
+    			</div>
+    			{% endif %}
+    			{% if site_name %}
+    			<a href="/" class="site-name font-weight-bold d-block py-3">{{site_name}}</a>
+    			{% endif %}
+    			{% if site_slogan %}
+    			<span>{{site_slogan}}</span>
+    			{% endif %}
+    		</div>
+		{% endif %}
 		{{ _self.menu_links(items, attributes, 0, show_icone_home) }}
 		<div class="hbk-mega-menu--burgers d-lg-none">
 			<!--region burger button-->
@@ -68,3 +70,6 @@
 			</div>
 		</div>
 </div>
+{% endmacro %}
+
+{{ _self.menu_container(items, attributes, show_icone_home, 'container', site_logo,site_name,site_slogan) }}

@@ -295,6 +295,15 @@ function hbk_cforge_preprocess_fieldset(&$variables) {
   $variables["string_title"] = $renderer->renderPlain($title)->__toString();
 }
 
+function hbk_cforge_theme_suggestions_menu_alter(array &$suggestions, array $variables) {
+  if (!empty($variables['menu_name'])) {
+    $suggestion = theme_get_setting('hbk_cforge_menu_display.' . $variables['menu_name']);
+    if ($suggestion) {
+      $suggestions[] = 'menu__' . $suggestion;
+    }
+  }
+}
+
 /**
  * Implements hook_theme_suggestions_HOOK_alter()
  *

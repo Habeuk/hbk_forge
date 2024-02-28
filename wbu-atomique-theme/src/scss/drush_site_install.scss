@@ -20,6 +20,9 @@ body {
   padding-left: $wbu-margin !important;
   padding-right: $wbu-margin !important;
 }
+#main-inner {
+  margin: 20px;
+}
 .cforge-bg-light {
   background-color: $light !important;
 
@@ -101,16 +104,33 @@ body {
 
 nav {
   ul.cforge-menu {
-    margin: 0;
-    margin-left: 0;
-
     .menu-item {
       a {
-        color: inherit;
-
+        padding: 10px $wbu-margin;
+        display: inline-block;
+        width: 100%;
+        transition: all 0.15s ease;
+        font-weight: 600;
+        text-decoration: none;
+        color: $dark;
+        position: relative;
         &:hover {
-          color: $wbu-color-thirdly;
+          background-color: $wbu-color-primary;
+          color: color-yiq($wbu-color-primary);
           text-decoration: none;
+        }
+        &.is-active::before {
+          position: absolute;
+          height: 2px;
+          top: auto;
+          bottom: 0;
+          left: $wbu-margin;
+          right: $wbu-margin;
+          background-color: $wbu-color-primary;
+          width: 0;
+          @include WBUtransition($temps: 0.15s);
+          content: "";
+          width: calc(100% - #{$wbu-margin * 2});
         }
       }
     }
@@ -145,38 +165,11 @@ h1.page-title {
 .title-block {
   margin-bottom: 2rem;
 }
-#page-sidebar_right {
+.page-sidebar {
   .title-block {
     border-bottom: 3px solid $wbu-color-primary;
     padding-bottom: 10px;
     margin-bottom: 0;
-  }
-  .menu--account,
-  .cforge-menu {
-    li {
-      a {
-        padding: 10px 20px;
-        display: inline-block;
-        width: 100%;
-        transition: all 0.15s ease;
-        font-weight: 600;
-        text-decoration: none;
-        color: $dark;
-
-        &:hover {
-          background-color: $wbu-color-primary;
-          color: $light !important;
-        }
-      }
-    }
-  }
-
-  .cforge-menu {
-    .menu-item {
-      a {
-        padding-block: 2px;
-      }
-    }
   }
 }
 /**

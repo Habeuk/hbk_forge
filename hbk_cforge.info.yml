@@ -13,10 +13,12 @@ libraries:
   - hbk_cforge/general-style
 regions:
   top_header: "Top Header"
+  second_menu: "Second menu"
   header: "Header"
   slider: "Slider"
   content: "Content"
-  sidebar_right: "Sidebar first"
+  sidebar_left: "Sidebar left"
+  sidebar_right: "Sidebar right"
   bottom: "before footer"
   footer: "Footer left"
   footer_end: "Footer bottom"

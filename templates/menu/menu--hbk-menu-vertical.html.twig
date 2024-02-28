@@ -1,0 +1,7 @@
+{% import '@hbk_cforge/menu/menu--account.html.twig' as menus %}
+
+{#
+  We call a macro which calls itself to render the full tree.
+  @see https://twig.symfony.com/doc/3.x/tags/macro.html
+#}
+{{ menus.menu_links(items, attributes, 0) }}

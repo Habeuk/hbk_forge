@@ -62,6 +62,33 @@ function hbk_cforge_form_system_theme_settings_alter(&$form, &$form_state) {
     '#default_value' => theme_get_setting('hbk_cforge_title_display.hidden')
   ];
 
+  $form['hbk_cforge_menu_display'] = [
+    '#type' => 'details',
+    '#title' => t('Menu display'),
+    '#description' => t("Manage how menus are displayed"),
+    '#group' => 'hbk_cforge_settings',
+    '#tree' => true,
+    '#open' => false
+  ];
+  $tempaltes_menus = [
+    '' => t("Default display"),
+    'hbk_menu_vertical' => t('Vertical align'),
+    'hbk_menu_horizontal' => t('Display with submenu')
+  ];
+  $menus = \Drupal\system\Entity\Menu::loadMultiple();
+  foreach ($menus as $menu) {
+    $id = $menu->id();
+    if ($id == 'main')
+      continue;
+    $form['hbk_cforge_menu_display'][$id] = [
+      '#type' => 'select',
+      '#title' => $menu->label(),
+      '#description' => t("You need to enable the 'Page Title' rendering block"),
+      '#options' => $tempaltes_menus,
+      '#default_value' => theme_get_setting('hbk_cforge_menu_display.' . $id)
+    ];
+  }
+
   // ////////////////////////////
   $configs = \Drupal::Config('hbk_cforge.settings')->get();
   $theme_list = [
