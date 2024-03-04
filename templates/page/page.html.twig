@@ -43,10 +43,13 @@ html.html.twig * * @ingroup themeable */ #}
 {{attach_library(global_lib)}}
 {{attach_library(vendor_lib)}}
 {% if page.sidebar_right and page.sidebar_left %}
-	{% set content_flex_class = "col-md-8 col-lg-6" %}
+	{% set content_flex_class = "col-md-8 col-lg-7" %}
 	{% set content_flex_disposition = "row justify-content-between" %}
-{% elseif page.sidebar_right or page.sidebar_left %}
+{% elseif page.sidebar_right  %}
 	{% set content_flex_class = "col-md-8 col-lg-9" %}
+	{% set content_flex_disposition = "row justify-content-between" %}
+{% elseif  page.sidebar_left %}
+	{% set content_flex_class = "col-md-8 col-lg-10" %}
 	{% set content_flex_disposition = "row justify-content-between" %}
 {% else %}
 	{% set content_flex_disposition = "justify-content-around" %}
@@ -77,7 +80,7 @@ html.html.twig * * @ingroup themeable */ #}
 	<div class="page-body container pt-4 position-relative mb-5">
 		<div class=" {{content_flex_disposition}}">
 			{% if page.sidebar_left %}
-				<aside id="page-sidebar_left" class="col-md-4 col-lg-3 position-sticky page-sidebar" role="complementary">
+				<aside id="page-sidebar_left" class="col-md-4 col-lg-2 position-sticky page-sidebar" role="complementary">
 					{{ page.sidebar_left }}
 				</aside>
 			{% endif %}

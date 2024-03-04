@@ -1,7 +1,8 @@
-{% import '@hbk_cforge/menu/menu--main.html.twig' as menus %}
+{{attach_library("hbk_cforge/menu-style")}}
+{% import '@hbk_cforge/menu/hbk-menu.html.twig' as menus %}
 
 {#
   We call a macro which calls itself to render the full tree.
   @see https://twig.symfony.com/doc/3.x/tags/macro.html
 #}
-{{ menus.menu_container(items, attributes, show_icone_home) }}
+{{ menus.menu_container(items, attributes, show_icone_home, 'container', site_logo,site_name,site_slogan) }}

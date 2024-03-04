@@ -78,14 +78,32 @@ function hbk_cforge_form_system_theme_settings_alter(&$form, &$form_state) {
   $menus = \Drupal\system\Entity\Menu::loadMultiple();
   foreach ($menus as $menu) {
     $id = $menu->id();
-    if ($id == 'main')
-      continue;
     $form['hbk_cforge_menu_display'][$id] = [
-      '#type' => 'select',
+      '#type' => 'details',
       '#title' => $menu->label(),
-      '#description' => t("You need to enable the 'Page Title' rendering block"),
       '#options' => $tempaltes_menus,
       '#default_value' => theme_get_setting('hbk_cforge_menu_display.' . $id)
+    ];
+    $form['hbk_cforge_menu_display'][$id]['template'] = [
+      '#type' => 'select',
+      '#title' => 'Template',
+      '#options' => $tempaltes_menus,
+      '#default_value' => theme_get_setting('hbk_cforge_menu_display.' . $id . '.template')
+    ];
+    $form['hbk_cforge_menu_display'][$id]['slogan'] = [
+      '#type' => 'checkbox',
+      '#title' => "Afficher le slogan",
+      '#default_value' => theme_get_setting('hbk_cforge_menu_display.' . $id . '.slogan')
+    ];
+    $form['hbk_cforge_menu_display'][$id]['logo'] = [
+      '#type' => 'checkbox',
+      '#title' => "Afficher le logo",
+      '#default_value' => theme_get_setting('hbk_cforge_menu_display.' . $id . '.logo')
+    ];
+    $form['hbk_cforge_menu_display'][$id]['name'] = [
+      '#type' => 'checkbox',
+      '#title' => "Afficher le nom du site",
+      '#default_value' => theme_get_setting('hbk_cforge_menu_display.' . $id . '.name')
     ];
   }
 

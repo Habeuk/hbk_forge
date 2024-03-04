@@ -118,7 +118,12 @@ function hbk_cforge_preprocess_page(&$variables) {
   }
   $variables['attributes']['id'] = 'wrapper';
   $variables['attributes']['class'][] = $variables['is_front'] ? "front-page" : "not-front-page " . ThemeHelper::getValidKeyForConfig($nameRoute);
-  ThemeHelper::getSiteInformation($variables);
+  $hbk_menu_config = [
+    'name' => 1,
+    'logo' => 1,
+    'slogan' => 1
+  ];
+  ThemeHelper::getSiteInformation($variables, $hbk_menu_config);
 }
 
 /**
@@ -252,8 +257,19 @@ function hbk_cforge_preprocess_comment__comment(&$variables) {
 /**
  * Implements hook_preprocess_HOOK() menu__main
  */
-function hbk_cforge_preprocess_menu__main(&$variables) {
-  ThemeHelper::getSiteInformation($variables);
+// function hbk_cforge_preprocess_menu__main(&$variables) {
+// ThemeHelper::getSiteInformation($variables);
+// }
+
+/**
+ * Implements hook_preprocess_HOOK() menu__main
+ */
+function hbk_cforge_preprocess_menu(&$variables) {
+  $template = theme_get_setting('hbk_cforge_menu_display.' . $variables['menu_name'] . '.template');
+  if ($template == "hbk_menu_horizontal" || $variables['menu_name'] == "main") {
+    $hbk_menu_config = theme_get_setting('hbk_cforge_menu_display.' . $variables['menu_name']);
+    ThemeHelper::getSiteInformation($variables, $hbk_menu_config);
+  }
 }
 
 /**
@@ -297,7 +313,7 @@ function hbk_cforge_preprocess_fieldset(&$variables) {
 
 function hbk_cforge_theme_suggestions_menu_alter(array &$suggestions, array $variables) {
   if (!empty($variables['menu_name'])) {
-    $suggestion = theme_get_setting('hbk_cforge_menu_display.' . $variables['menu_name']);
+    $suggestion = theme_get_setting('hbk_cforge_menu_display.' . $variables['menu_name'] . '.template');
     if ($suggestion) {
       $suggestions[] = 'menu__' . $suggestion;
     }

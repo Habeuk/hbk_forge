@@ -22,8 +22,8 @@ const plugins = [];
 // const color_dir = "dark/";
 // const color_dir = "orange/";
 // const color_dir = "brown/";
-// const color_dir = "blue/";
-const color_dir = "green/";
+const color_dir = "blue/";
+// const color_dir = "green/";
 plugins.push(
   new MiniCssExtractPlugin({
     filename: "./css/" + color_dir + "[name].css",
