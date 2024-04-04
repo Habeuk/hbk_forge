@@ -14,6 +14,7 @@ class ThemeHelper {
       $variables["site_name"] = $site_name;
     }
     if (!empty($hbk_menu_config['logo'])) {
+      $site_name = \Drupal::config('system.site')->get('name');
       $logo_path = \Drupal::theme()->getActiveTheme()->getLogo();
       if ($logo_path) {
         $site_logo = [
