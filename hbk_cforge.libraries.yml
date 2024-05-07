@@ -11,7 +11,6 @@ global-style:
 general-style:
   css:
     theme:
-      css/general-style.css: {}
       css/components.css: {}
 
 vendor-style:
@@ -29,7 +28,6 @@ menu-style:
     js/menu-style.js: { preprocess: false }
   dependencies:
     - core/drupal
-    
 
 slider-style:
   css:
