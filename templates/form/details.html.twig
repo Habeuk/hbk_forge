@@ -15,44 +15,45 @@
  * @see template_preprocess_details()
  */
 #}
+{% set attribs = attributes.toArray() %}
+{% set status_open= attribs.open == 'open' ? true : false %}
 
-{% set toggle_class = "" %}
-<div{{attributes}}>
-	{%- if title -%}
-		{%
-      set summary_classes = [
-        required ? 'js-form-required',
-        required ? 'form-required',
-      ]
-    %}
-		{% set toggle_class = "collapse" %}
-		<legend{{summary_attributes.addClass(summary_classes)}}>
-			<button class="btn-collapse btn btn-outline-primary w-100 text-left" type="button" data-toggle="collapse" data-target="#{{field_set_id}}" aria-expanded="false" aria-controls="{{field_set_id}}">
-				<span{{legend_span.attributes.addClass(legend_span_classes)}}>
-					{{ title }}
-				</span>
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" xml:space="preserve" transform="rotate(90)"><path fill="currentColor" d="M15.563 40.836a.997.997 0 0 0 1.414 0l15-15a.999.999 0 0 0 0-1.414l-15-15a.999.999 0 1 0-1.414 1.414l14.293 14.293-14.293 14.293a.999.999 0 0 0 0 1.414z"/></svg>
-			</button>
-		</legend>
-
-	{%- endif -%}
-	<div class="{{toggle_class}} border px-5" id="{{field_set_id}}">
-
-		<div class="details-wrapper">
-			{% if errors %}
-				<div class="form-item--error-message">
-					<strong>{{ errors }}</strong>
-				</div>
-			{% endif %}
-			{%- if description -%}
-				<div class="details-description">{{ description }}</div>
-			{%- endif -%}
-			{%- if children -%}
-				{{ children }}
-			{%- endif -%}
-			{%- if value -%}
-				{{ value }}
-			{%- endif -%}
-		</div>
-	</div>
+<div {{attributes.addClass('mb-4')}}>
+    <div>
+    	{%- if title -%}
+    		{%
+          set summary_classes = [
+            required ? 'js-form-required',
+            required ? 'form-required',
+          ]
+        %}
+    		<legend{{summary_attributes.addClass(summary_classes).addClass('mb-0')}}>
+    			<button class="btn-collapse btn btn-outline-primary w-100 text-left" type="button" data-toggle="collapse" data-target="#{{field_set_id}}-content" aria-expanded="false" aria-controls="{{field_set_id}}">
+    				<span{{legend_span.attributes.addClass(legend_span_classes)}}>
+    					{{ title }}
+    				</span>
+    				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" xml:space="preserve" transform="rotate(90)"><path fill="currentColor" d="M15.563 40.836a.997.997 0 0 0 1.414 0l15-15a.999.999 0 0 0 0-1.414l-15-15a.999.999 0 1 0-1.414 1.414l14.293 14.293-14.293 14.293a.999.999 0 0 0 0 1.414z"/></svg>
+    			</button>
+    		</legend>
+    
+    	{%- endif -%}
+    	<div class="collapse border p-4 {% if status_open %} show {% endif %}" id="{{field_set_id}}-content">
+    		<div class="details-wrapper">
+    			{% if errors %}
+    				<div class="form-item--error-message">
+    					<strong>{{ errors }}</strong>
+    				</div>
+    			{% endif %}
+    			{%- if description -%}
+    				<div class="details-description">{{ description }}</div>
+    			{%- endif -%}
+    			{%- if children -%}
+    				{{ children }}
+    			{%- endif -%}
+    			{%- if value -%}
+    				{{ value }}
+    			{%- endif -%}
+    		</div>
+    	</div>
+    </div>
 </div>

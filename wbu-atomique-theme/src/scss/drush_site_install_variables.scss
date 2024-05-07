@@ -7,10 +7,10 @@
 // colors
 
 // 1 teal Color
-// $wbu-color-primary: teal;
-// $wbu-color-secondary: #0e0e0e;
-// $wbu-color-thirdly: #003a3a;
-// $wbu-background: #0f103e;
+$wbu-color-primary: teal;
+$wbu-color-secondary: #0e0e0e;
+$wbu-color-thirdly: #003a3a;
+$wbu-background: #0f103e;
 
 // 2 passion Color
 // $wbu-color-primary: #aa0a33;
@@ -37,10 +37,10 @@
 // $wbu-background: #0f103e;
 
 // 6 brown Color
- $wbu-color-primary: #a47551;
- $wbu-color-secondary: #d0b49f;
- $wbu-color-thirdly: #e4d4c8;
- $wbu-background: #523a28;
+// $wbu-color-primary: #a47551;
+// $wbu-color-secondary: #d0b49f;
+// $wbu-color-thirdly: #e4d4c8;
+// $wbu-background: #523a28;
 
 // 7 blue Color
 // $wbu-color-primary: #055c9d;
@@ -73,8 +73,8 @@ $wbu_titre_suppra: 7.4rem;
 $wbu_titre_biggest: 6.4rem;
 
 /**
-     * On injecte toutes les variables directement dans ce fichier.
-     */
+ * On injecte toutes les variables directement dans ce fichier.
+ */
 @import "@stephane888/wbu-atomique/scss/wbu-ressources-clean.scss";
 
 // Les variables qui ont besoins des informations provenant du core de
