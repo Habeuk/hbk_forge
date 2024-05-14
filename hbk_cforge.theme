@@ -132,7 +132,7 @@ function hbk_cforge_preprocess_page(&$variables) {
  * Implements hook_form_alter().
  */
 function hbk_cforge_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
-  if (strpos($form["#action"], "search") !== FALSE) {
+  if (isset($form["#action"]) && strpos($form["#action"], "search") !== FALSE) {
     $form["#attributes"]["class"][] = "my-search-form";
   }
 }
