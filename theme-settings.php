@@ -14,7 +14,7 @@ function hbk_cforge_form_system_theme_settings_alter(&$form, &$form_state) {
   // Vertical tabs.
   $form['hbk_cforge_settings'] = [
     '#type' => 'vertical_tabs',
-    '#prefix' => '<h2><small>' . t('Customize the appearance of your site') . '</small></h2>',
+    '#prefix' => '<h2>' . t('Customize the appearance of your site') . '</h2>',
     '#weight' => -20
   ];
   /**

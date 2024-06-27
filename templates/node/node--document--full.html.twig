@@ -72,67 +72,53 @@
     'node',
     'node--type-' ~ node.bundle|clean_class,
     node.isPromoted() ? 'node--promoted',
-    node.isSticky() ? 'node--sticky',
     not node.isPublished() ? 'node--unpublished',
     view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
     'cforge--node-full',
   ]
 %}
+{{ content.when }}
 {{ attach_library('stable9/node') }}
 <article{{attributes.addClass(classes)}}>
-	{{ title_prefix }}
-	{% if label and not page %}
-		<h1{{title_attributes}}>
-			<a href="{{ url }}" rel="bookmark">{{ label }}</a>
-		</h1>
-	{% endif %}
-	{{ title_suffix }}
-	<div{{content_attributes.addClass('node__content')}}>
-		<div class="main-node pb-3">
-			{% if content.image %}
-				<div class="node--image text-center mb-4">
-					{{content.image}}
-				</div>
-			{% endif %}
-			{% if content.body %}
-				<div class="node--body">
-					{{content.body}}
-				</div>
-			{% endif %}
-			{{ content|without('tags', 'image', 'body','comments') }}
-			{% if display_submitted %}
-				<header class="node__meta d-sm-flex justify-content-between align-item-center mt-5">
-					<div class="small text-black-50 meta mb-3 mb-sm-0">
-						{% trans %}
-						{{ date }}
-						{% endtrans %}
-					</div>
-					{{ metadata }}
-					{% if content.tags %}
-						<div class="node--tags">
-							{% for tag in content.tags %}
-								<div class="node-tag-link">
-									{{tag}}
-								</div>
-							{% endfor %}
-						</div>
-					{% endif %}
-				</header>
-			{% endif %}
-		</div>
-		{% if content.comments %}
-			{% if content.comments[0]["comments"] %}
-				<div class="comments mt-sm-5 mb-5">
-					{{content.comments[0]["comments"]}}
-				</div>
-			{% endif %}
-			<div class="node-comment-form">
-				<div class="d-flex justify-content-center border mb-5 py-5 cforge-bg-gray-200">
-					<div class="w-75 comment-form">
-						{{content.comments[0]["comment_form"]}}
-					</div>
-				</div>
-			</div>
-		{% endif %}
-	</div>
+    {{ title_prefix }}
+    {% if label and not page %}
+        <h1{{title_attributes}}>
+            <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+        </h1>
+    {% endif %}
+    {{ title_suffix }}
+    <div{{content_attributes.addClass('node__content')}}>
+        <div class="main-node pb-3">
+            {{content.terms}}
+            {% if content.body %}
+                <div class="node--body">
+                    {{content.body}}
+                </div>
+            {% endif %}
+            {% if display_submitted %}
+                <header class="node__meta d-sm-flex justify-content-between align-item-center mt-5">
+                    <div class="small text-black-50 meta mb-3 mb-sm-0">
+                        {{ date|trans }}
+                    </div>
+                    {{ metadata }}
+                </header>
+            {% endif %}
+            
+            {{content.attached_private}}
+        </div>
+        {% if content.comments %}
+            {% if content.comments[0]["comments"] %}
+                <div class="comments mt-sm-5 mb-5">
+                    {{content.comments[0]["comments"]}}
+                </div>
+            {% endif %}
+            <div class="node-comment-form">
+                <div class="d-flex justify-content-center border mb-5 py-5 cforge-bg-gray-200">
+                    <div class="w-75 comment-form">
+                        {{content.comments[0]["comment_form"]}}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
 </article>

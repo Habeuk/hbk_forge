@@ -1,6 +1,6 @@
 @use "../drush_site_install_variables.scss" as *;
 .js-text-format-wrapper {
-  padding: 1rem 3rem;
+  padding: 2rem;
   border: 1px solid #ccc;
   background: #fdfcfc;
 }
@@ -23,5 +23,10 @@ legend {
         transform: translateY(-50%) rotate(-90deg);
       }
     }
+  }
+}
+form {
+  > fieldset {
+    margin-bottom: 1.5rem;
   }
 }

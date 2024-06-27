@@ -5,6 +5,7 @@ use Drupal\Core\Render\Element;
 use Drupal\hbk_cforge\ThemeHelper;
 use Drupal\Component\Utility\Random;
 use Drupal\Component\Utility\Html;
+use Drupal\hbk_cforge\ThemeSettings;
 
 /**
  *
@@ -343,6 +344,99 @@ function hbk_cforge_theme_suggestions_node_alter(array &$suggestions, array $var
     $select_template = theme_get_setting('hbk_cforge_node_template.' . $node->bundle() . '.teaser');
     if ($variables['elements']['#view_mode'] == 'teaser' && $select_template) {
       $suggestions[] = 'node__' . $select_template;
+    }
+  }
+}
+
+/**
+ * Implement hook_preprocess_HOOK
+ *
+ * @param array $variables
+ */
+function hbk_cforge_preprocess_select(&$variables) {
+  $variables['attributes']['class'][] = 'form-control w-auto';
+}
+
+/**
+ * Implement hook_preprocess_HOOK
+ *
+ * @param array $variables
+ */
+function hbk_cforge_preprocess_input(&$variables) {
+  if (in_array($variables['element']['#type'], ThemeSettings::$control_inputs)) {
+    $variables['attributes']['class'][] = 'form-control';
+  }
+  elseif (in_array($variables['element']['#type'], ThemeSettings::$check_inputs)) {
+    $variables['attributes']['class'][] = 'form-check-input';
+  }
+  else {
+    // dump($variables['element']['#type']);
+  }
+}
+
+/**
+ *
+ * @param array $variables
+ */
+function hbk_cforge_preprocess_input__tel(&$variables) {
+  $variables['attributes']['class'][] = 'form-control';
+}
+
+function hbk_cforge_preprocess_file_managed_file(&$vars) {
+  $vars['attributes']['class'][] = 'd-flex';
+}
+
+/**
+ * Implement hook_form_alter
+ *
+ * @param array $variables
+ */
+function hbk_cforge_preprocess_textarea(&$variables) {
+  $variables['attributes']['class'][] = 'form-control';
+}
+
+/**
+ * Implement hook_form_alter
+ *
+ * @param array $variables
+ */
+function hbk_cforge_preprocess_container(&$variables) {
+  $variables['attributes']['class'][] = 'mb-4';
+}
+
+/**
+ * Formatage des conteneurs.
+ *
+ * @param array $variables
+ */
+function hbk_cforge_preprocess_form_element(&$variables) {
+  if (!empty($variables["element"]["#type"])) {
+
+    // On ajoute une marge sur tous les conteneur de champs.
+    $variables['attributes']['class'][] = "mb-4";
+    // On formatte directement les champs password utiliser dans
+    // password_confirm.
+    if (!empty($variables['name']) && ($variables['name'] == "pass[pass1]" || $variables['name'] == "pass[pass2]")) {
+      $variables['attributes']['class'][] = 'col-md-6 px-1 pe-md-3';
+    }
+    // On ajoute les class sur les labels
+    if (in_array($variables['element']['#type'], ThemeSettings::$control_inputs)) {
+      $variables['label']['#attributes']['class'][] = 'form-label';
+    }
+    elseif (in_array($variables['element']['#type'], ThemeSettings::$check_inputs)) {
+      $variables['label']['#attributes']['class'][] = 'form-check-label';
+      $variables['attributes']['class'][] = 'form-check';
+    }
+    // le champs password_confirm est tres peu utiliser, on fait un formatage
+    // endur.
+    elseif ($variables['element']['#type'] == 'password_confirm') {
+      $variables['attributes']['class'][] = 'mb-4 row g-0 py-4 px-3 px-md-4 bg-light border';
+    }
+
+    // formatage de la description des champs.
+    if (!empty($variables["description"]["attributes"])) {
+      if ($variables["description"]["attributes"] instanceof \Drupal\Core\Template\Attribute)
+        $variables["description"]["attributes"]->addClass('small text-secondary fst-italic opacity-75');
     }
   }
 }
