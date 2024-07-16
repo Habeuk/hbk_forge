@@ -11,17 +11,17 @@ body {
     min-height: 250px;
   }
   // Mise en place de la logique des layouts de base.
-  @include media-min('MD'){
-	  .page-body {
-		  > .main-layout {
-			  > .page-sidebar {
-				  width: 20%;
-				  max-width: 20%;
-				  flex: 0 0 20%;
-			  }
-		  }		  
-	  }	  
-  }	  
+  @include media-min("MD") {
+    .page-body {
+      > .main-layout {
+        > .page-sidebar {
+          width: 20%;
+          max-width: 20%;
+          flex: 0 0 20%;
+        }
+      }
+    }
+  }
 }
 .container {
   max-width: 1500px !important;
@@ -184,12 +184,13 @@ h1.page-title {
 /**
  * Formattage des pages articles.
  */
-article {
-  .links {
-    @extend .puce-check;
-    @extend .puce-check--color-secondary;
-  }
-}
+// desactivé car non desiré par le client.
+// article {
+//   .links {
+//     @extend .puce-check;
+//     @extend .puce-check--color-secondary;
+//   }
+// }
 article.comment {
   border-top: 1px solid $gray-400;
 }

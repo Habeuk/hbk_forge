@@ -110,7 +110,7 @@ function hbk_cforge_preprocess_page(&$variables) {
   $nameRoute = \Drupal::routeMatch()->getRouteName();
   $site_name = \Drupal::config('system.site')->get('name');
   $variables["site_name"] = $site_name;
-
+  
   $site_configs = \Drupal::Config('hbk_cforge.settings')->get();
   if (isset($site_configs["social"]) && $site_configs["social"]["show_social"]) {
     $variables["socials"] = [
@@ -155,7 +155,7 @@ function hbk_cforge_preprocess_views_view_unformatted(&$variables) {
   $request_stack = \Drupal::service('request_stack');
   $current_request = $request_stack->getCurrentRequest();
   $current_url = $current_request;
-
+  
   if ($current_url->getPathInfo()) {
     $variables["is_home"] = TRUE;
   }
@@ -311,13 +311,6 @@ function hbk_cforge_preprocess_details(&$variables) {
  */
 function hbk_cforge_preprocess_fieldset(&$variables) {
   $variables["field_set_id"] = Html::getId($variables["element"]["#id"]);
-  $title = $variables["legend"]["title"];
-  /**
-   *
-   * @var Drupal\Core\Render\Renderer $renderer
-   */
-  $renderer = \Drupal::service('renderer');
-  $variables["string_title"] = $renderer->renderPlain($title)->__toString();
 }
 
 function hbk_cforge_theme_suggestions_menu_alter(array &$suggestions, array $variables) {
@@ -411,7 +404,7 @@ function hbk_cforge_preprocess_container(&$variables) {
  */
 function hbk_cforge_preprocess_form_element(&$variables) {
   if (!empty($variables["element"]["#type"])) {
-
+    
     // On ajoute une marge sur tous les conteneur de champs.
     $variables['attributes']['class'][] = "mb-4";
     // On formatte directement les champs password utiliser dans
@@ -432,7 +425,7 @@ function hbk_cforge_preprocess_form_element(&$variables) {
     elseif ($variables['element']['#type'] == 'password_confirm') {
       $variables['attributes']['class'][] = 'mb-4 row g-0 py-4 px-3 px-md-4 bg-light border';
     }
-
+    
     // formatage de la description des champs.
     if (!empty($variables["description"]["attributes"])) {
       if ($variables["description"]["attributes"] instanceof \Drupal\Core\Template\Attribute)
