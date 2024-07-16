@@ -449,3 +449,24 @@ function hbk_cforge_preprocess_form_element(&$variables) {
     }
   }
 }
+
+function hbk_cforge_theme_suggestions_views_view_summary_unformatted_alter(array &$suggestions, array $variables) {
+  /**
+   *
+   * @var \Drupal\views\ViewExecutable $view
+   */
+  $view = $variables['view'];
+  $suggestions[] = 'views_view_summary_unformatted__' . $view->id();
+}
+
+/**
+ * Suggestion pour les vues.
+ */
+function hbk_cforge_theme_suggestions_views_view_alter(array &$suggestions, array $variables) {
+  /**
+   *
+   * @var \Drupal\views\ViewExecutable $view
+   */
+  $view = $variables['view'];
+  $suggestions[] = 'views_view__' . $view->id();
+}
