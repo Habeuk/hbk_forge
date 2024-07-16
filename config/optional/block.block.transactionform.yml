@@ -17,10 +17,7 @@ settings:
   label: "Bill a member"
   label_display: visible
   provider: mcapi_forms
-  editform_type:
-    provider: mcapi_forms
-    label: "Bill a member"
-    label_display: visible
+  editform_type: standard_bill
 visibility:
   request_path:
     id: request_path
