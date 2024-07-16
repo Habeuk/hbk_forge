@@ -5,6 +5,7 @@
 @use "./custom.scss";
 @use "./input-style.scss";
 @use "./node--full.scss";
+@use "./components/details.scss";
 
 body {
   .metro-service {
@@ -308,4 +309,11 @@ article.comment {
   .field__label {
     font-weight: 600;
   }
+}
+
+/**
+ * vertical-tabs__panes
+ */
+.vertical-tabs__panes {
+  padding: $wbu-margin * 0.5;
 }

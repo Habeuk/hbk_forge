@@ -297,20 +297,36 @@ function hbk_cforge_preprocess_breadcrumb(&$variables) {
  * Implements hook_preprocess_HOOK()
  */
 function hbk_cforge_preprocess_details(&$variables) {
-  if (!empty($variables["element"]["#id"])) {
-    $variables["field_set_id"] = Html::getId($variables["element"]["#id"]);
-  }
-  else {
-    $Random = new Random();
-    $variables["field_set_id"] = Html::getId($Random->name(10, true));
-  }
+  // if (!empty($variables["element"]["#id"])) {
+  // $variables["field_set_id"] = Html::getId($variables["element"]["#id"]);
+  // }
+  // else {
+  // $Random = new Random();
+  // $variables["field_set_id"] = Html::getId($Random->name(10, true));
+  // }
 }
 
 /**
  * Implements hook_preprocess_HOOK()
  */
 function hbk_cforge_preprocess_fieldset(&$variables) {
-  $variables["field_set_id"] = Html::getId($variables["element"]["#id"]);
+  // $variables["field_set_id"] = Html::getId($variables["element"]["#id"]);
+}
+
+/**
+ * implement hook_preprocess_datetime_form
+ *
+ * @param array $variables
+ */
+function hbk_cforge_preprocess_datetime_form(&$variables) {
+  $variables['attributes']['class'][] = 'd-flex';
+}
+
+/**
+ * Implement hook_preprocess_container__text_format_filter_wrapper
+ */
+function hbk_cforge_preprocess_container__text_format_filter_wrapper(&$variables) {
+  $variables['attributes']['class'][] = 'small';
 }
 
 function hbk_cforge_theme_suggestions_menu_alter(array &$suggestions, array $variables) {
@@ -347,6 +363,9 @@ function hbk_cforge_theme_suggestions_node_alter(array &$suggestions, array $var
  * @param array $variables
  */
 function hbk_cforge_preprocess_select(&$variables) {
+  if ($variables['attributes']['class'] && in_array("js-filter-list", $variables['attributes']['class'])) {
+    $variables['attributes']['class'][] = 'form-control-sm d-inline-block';
+  }
   $variables['attributes']['class'][] = 'form-control w-auto';
 }
 
@@ -361,9 +380,6 @@ function hbk_cforge_preprocess_input(&$variables) {
   }
   elseif (in_array($variables['element']['#type'], ThemeSettings::$check_inputs)) {
     $variables['attributes']['class'][] = 'form-check-input';
-  }
-  else {
-    // dump($variables['element']['#type']);
   }
 }
 
