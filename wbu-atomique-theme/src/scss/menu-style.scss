@@ -22,7 +22,27 @@
     &.open {
       z-index: 999;
     }
+    .item.menu-item--expanded {
+      &::before {
+        display: none;
+      }
+      > .hbk-mega-menu--items__sub {
+        top: calc(100% - 4px);
+        &::before {
+          position: absolute;
+          height: 4px;
+          top: 0;
+          bottom: auto;
+          left: 0;
+          right: auto;
+          background-color: $wbu-color-primary;
+          width: 100%;
+          content: "";
+        }
+      }
+    }
     .item-link {
+      white-space: nowrap;
       &.is-active,
       &:hover {
         color: $wbu-color-primary;
@@ -54,6 +74,7 @@
       }
     }
     .hbk-mega-menu--items__sub {
+      width: auto;
       .item .item-link {
         padding: $wbu-margin * 0.5 $wbu-margin;
       }
